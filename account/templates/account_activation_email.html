@@ -1,0 +1,7 @@
+{% load configs %}
+{% autoescape off %}
+    Hola {{ user.username }},
+
+    Por favor haga click en el link debajo para confirmar su registracion:
+    {% url_site %}{% url 'account:activate' uidb64=uid token=token %}
+{% endautoescape %}

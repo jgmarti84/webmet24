@@ -1,0 +1,39 @@
+{% load static %} {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="">
+
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/materialize.min.js' %}"></script>
+        {% block extra_head %}
+        <title>Radar</title>
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block header %}
+        {% endblock %}
+        <div class="row">
+            <div class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4 ">
+                <div class="row box">
+                    <img class='hide-on-small-only' src="{% static 'images/icon.png' %}" width="150px">
+                    <img class='hide-on-med-and-up' src="{% static 'images/icon.png' %}" width="  50px">
+                    <br/>
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/script.js' %}"></script>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

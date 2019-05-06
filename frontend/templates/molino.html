@@ -1,0 +1,63 @@
+{% for sensor in '01' %}
+<div id="popUpMolino-box{{sensor}}" class="sortables windows row side-molino ui-draggable ui-draggable-handle"
+     style="width: 800px; right: 20px{% if sensor == '1' %}; top: 450px{% endif %}">
+
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <button data-position="top" data-delay="50" data-tooltip="Cerrar" class="btn-floating btn-close waves-effect waves-light grey material-icons tooltipped" onclick="change_molino('box{{sensor}}', false);">
+                <i class="material-icons">close</i>
+            </button>
+            <!--            <i class="material-icons red-text right pointer col s2 btn_close">⨯</i>-->
+            <i class="material-icons red-text col s1 window_title" style="transform: rotate(45deg);">games</i>
+            <a href="#!" class="red-text col s9 window_title">Campo Molino Eléctrico {{sensor}}</a>
+        </div>
+        <div class="divider red"></div>
+    </div>
+    <div id="contentMolino" class="row">
+        <div id="molino-div-{{sensor}}">
+            <img id='image_campoE{{sensor}}' src="http://webmet.ohmc.xyz/media/campo/CampoE{{sensor}}.png" width="800">
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<ul id="side-molino" class="side-nav side-molino">
+    <li>
+        <button data-position="right" data-delay="50"
+                data-tooltip="Despegar ventana"
+                class='btn-floating waves-effect waves-light grey-text red material-icons tooltipped btn_popup'>
+            <i class="material-icons">launch</i>
+        </button>
+
+        <!--        <i class="material-icons red-text right btn_popup">launch</i>-->
+    </li>
+    <li>
+        <a href="#!" class='red-text'><i class="material-icons red-text" style="transform: rotate(45deg);">games</i> Campo Molino Eléctrico </a>
+    </li>
+    <li>
+        <div class="divider red "></div>
+    </li>
+    <br>
+    <div id="molino-div">
+        {% for sensor in '01' %}
+        <ul class="card-estaciones " >
+            <li class="row valign-wrapper pointer" style='margin-bottom: 0px !important'>
+                <div class="col s2">
+                    <input type="checkbox" class='pupup-molino' id="box{{ sensor }}">
+                    <label for="box{{ sensor }}"></label>
+                </div>
+                <div class="col s8">
+                    <strong style="font-size: 1em">Molino Campo {{sensor}}</strong>
+                </div>
+                <div class="col s2">
+                    <a href="#!" class="secondary-content">
+                        <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                           data-tooltip="Esta es el Molino de Campo eléctrico {{sensor}}">info</i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+</ul>
+

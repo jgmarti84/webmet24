@@ -1,0 +1,288 @@
+{% extends 'base_fe.html' %}
+{% load static %} {% load staticfiles %} {% load tags_vars %}
+
+{% block extra_head %}
+<title>Grupo Radar Cordoba</title>
+{% endblock %}
+
+
+{% block header %}
+
+<!-- OPENLAYERS
+<link rel="stylesheet" href="{% static 'css/ol.css' %}">
+<link rel="stylesheet" href="{% static 'css/ol3-geocoder.min.css' %}">
+-->
+<!-- LEAFLET-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+      integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+      crossorigin=""/>
+<link rel="stylesheet" href="{% static 'css/leaflet-search.css' %}">
+<!--<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">-->
+
+
+<link rel="stylesheet" href="{% static 'css/radar_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.css' %}">
+<link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
+
+{% endblock %}
+{% block content %}
+
+<div id="gif_radar_cont">
+    <div id='gif_radar_img'>
+        <h5 style="font-size:10px;"><span id='loader_string'>Cargando</span><marquee style="width:15px;">...</marquee></h5>
+        <img src="{% static 'images/radar.gif' %}" width="85px"/>
+    </div>
+</div>
+<div id="data" class='' style="background-color: #fafafa">
+    <div class='row'>
+        <div class='col m5 hide-on-small-only'>
+            Rango seleccionado: <span id="date_range_from"></span> - <span id="date_range_to"></span>
+        </div>
+        <div class='col m5 s12'>
+            Mostrando:<span id='fecha-valor' class=''>22/05/17 00:00hs </span>
+            (Frame <span id='frame-valor'>1</span> de <span id='frame-max'>1</span>)
+        </div>
+        <div class='col m2 hide-on-small-only'>
+            <span class='right-align' id="mouse-position"></span>
+        </div>
+
+    </div>
+</div>
+
+{% include 'graphics.html' %}
+
+<div class='logo'>
+    <img class='hide-on-small-only' src="{% static 'images/icon.png' %}" width="150px">
+    <img class='hide-on-med-and-up' src="{% static 'images/icon.png' %}" width="  50px">
+</div>
+
+<div class="fixed-action-btn click-to-toggle" style="z-index: 100000">
+    <a class="btn-floating btn-large blue">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-user" class="btn-floating cyan button-sidenave sidenav-effect tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Configuración">
+                <i class="material-icons">settings</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#!" id='show_graficos' class="disabled btn-floating green tooltipped" data-position="left"
+               data-delay="50" data-tooltip="Gráficos">
+                <i class="material-icons">timeline</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-layers" class="btn-floating orange button-sidenave sidenav-effect tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Capas">
+                <i class="material-icons">clear_all</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-estaciones" class="disabled btn-floating green button-sidenave sidenav-effect tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Estaciones Meteorológicas">
+                <i class="material-icons">wb_sunny</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <!--<a href="#" onclick="$('#popUpMolino').show()" class="btn-floating red button-sidenave sidenav-effect tooltipped"-->
+            <a href="#" data-activates="side-molino" class="btn-floating red button-sidenave sidenav-effect tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Molinos de campo eléctrico ">
+                <i class="material-icons" style="transform: rotate(45deg);">games</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <button data-target="help_modal" data-position="left" data-delay="50"
+                    data-tooltip="Ayuda"
+                    onclick="$('.fixed-action-btn').closeFAB();"
+                    class="btn-floating sidenav-effect yellow tooltipped modal-trigger">
+                <i class="material-icons">help</i></button>
+        </li>
+    </ul>
+</div>
+
+{% include 'configuration.html' %}
+
+{% include 'layers.html' %}
+
+{% include 'wstations.html' %}
+
+{% include 'molino.html' %}
+
+<div id="map">
+    <div id="popup"></div>
+</div>
+<div id="popUpLayer" class="sortables windows row side-layers">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <button data-position="top" data-delay="50"
+                    data-tooltip="Cerrar"
+                    class='btn-floating btn-close waves-effect waves-light grey material-icons tooltipped btn_close'>
+                <i class="material-icons">close</i>
+            </button>
+            <!--            <i class="btn-floating btn-close waves-effect waves-light grey material-icons btn_close">close</i>-->
+            <i class="material-icons orange-text col s1 window_title">clear_all</i>
+            <a href="#!" class='orange-text col s9 window_title'>CAPAS DE VISUALIZACIÓN</a>
+        </div>
+        <div class="divider orange "></div>
+    </div>
+    <div id="contentLayer" class="row"></div>
+</div>
+<div id="popUpStation" class="sortables windows row side-estaciones">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <button data-position="top" data-delay="50"
+                    data-tooltip="Cerrar"
+                    class='btn-floating btn-close waves-effect waves-light grey material-icons tooltipped btn_close'>
+                <i class="material-icons">close</i>
+            </button>
+            <!--            <i class="material-icons yellow-text right pointer col s2 btn_close">⨯</i>-->
+            <i class="material-icons green-text col s1 window_title">clear_all</i>
+            <a href="#!" class='green-text col s9 window_title'>Estaciónes Meteorológicas</a>
+        </div>
+        <div class="divider green "></div>
+    </div>
+    <div id="contentStation" class="row"></div>
+</div>
+<div id="popUpMolino" class="sortables windows row side-molino">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <button data-position="top" data-delay="50"
+                    data-tooltip="Cerrar"
+                    class='btn-floating btn-close waves-effect waves-light grey material-icons tooltipped btn_close'>
+                <i class="material-icons">close</i>
+            </button>
+            <!--            <i class="material-icons red-text right pointer col s2 btn_close">⨯</i>-->
+            <i class="material-icons red-text col s1 window_title" style="transform: rotate(45deg);">games</i>
+            <a href="#!" class='red-text col s9 window_title'>Campo Molino Eléctrico</a>
+        </div>
+        <div class="divider red"></div>
+    </div>
+    <div id="contentMolino" class="row"></div>
+</div>
+
+<div id="help_modal" class="modal">
+    <div class="modal-content">
+        <h4>Ayuda</h4>
+        <div class='divider yellow yellow-text'></div>
+        <p>Para cerrar una referencia se debe hacer click con el boton derecho</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat yellow accent-3">Gracias</a>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block script %}
+<script>
+    var init_values= {};
+
+    init_values['lat'] = {% if lat %} {{lat}} {% else %} -39.740986355883564 {% endif %};
+                                                                              init_values['long'] = {% if long %} {{long}} {% else %} -65.25878906250001 {% endif %};
+    init_values['zoom'] = {% if zoom %} {{zoom}} {% else %} 5 {% endif %};
+
+                                                               var wrf_prod = [];
+                                                               {% for prod in wrf_products %}
+                                                               wrf_prod.push('{{prod.product_key}}');
+                                                                {% endfor %}
+
+                                                                var polarimetrics_vars = [];
+                                                                 var polarimetrics_vars_utils = {}
+                                                                 {% for prod in radar_products %}
+                                                                 polarimetrics_vars.push('{{prod.product_key}}');
+                                                                  polarimetrics_vars_utils['{{prod.product_key}}'] = {
+                                                                      'strategy':'{{prod.strategy}}',
+                                                                      'scanning':'{{prod.scanning}}',
+                                                                      'sweep':'{{prod.sweep}}',
+                                                                      show_me:'{{prod.show}}'
+                                                                  };
+
+                                                                  {% endfor %}
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/3.20.1/ol.js"></script>-->
+<!--<script src="{% static 'js/ol-debug.js' %}"></script>-->
+<!--<script src="{% static 'js/ol3-geocoder.js' %}"></script>-->
+<!--LEAFLET-->
+<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+        integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+        crossorigin=""></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+<!--<script src="{% static 'js/leaflet-bing.js' %}"></script>-->
+<script src="{% static 'js/leaflet-search.js' %}"></script>
+<script src="{% static 'js/leaflet-bouncemarker.js' %}"></script>
+
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/nouislider.js' %}"></script>
+<script src="{% static 'js/moments.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
+<!--CHARTS <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{% static 'js/charts.js' %}"></script>-->
+<script src="{% static 'js/functions.js' %}"></script>
+<script src="{% static 'js/maps.js' %}"></script>
+<!--<script src="{% static 'js/molino.js' %}"></script>-->
+
+
+<script src="{% static 'js/graphic.js' %}"></script>
+
+{% asign_boolean_var "show_stations" as show_stations %}
+{% if  show_stations %}
+<script src="{% static 'js/wstations.js' %}"></script>
+
+{% endif %}
+<script src="{% static 'js/radares.js' %}"></script>
+<script src="{% static 'js/layer_events.js' %}"></script>
+
+<script>
+    $( ".radar_products_references" ).draggable({ containment: "#map", scroll: false });
+    $( ".wrf_products_references" ).draggable({ containment: "#map", scroll: false });
+</script>
+
+<script>
+    function change_molino(id,status){
+        if (status){
+            $('#popUpMolino-'+id).show();
+        }else{
+            $('#popUpMolino-'+id).hide();
+            $('#'+id).prop('checked',status);
+        }
+    }
+
+    $(document).ready(function(){
+
+
+        $('.pupup-molino').on('click', (function (e) {
+            let id = $(this).attr('id');
+            console.log(id);
+            if ($(this).is(':checked')) {
+                change_molino(id, true);
+            } else {
+                change_molino(id, false);
+            }
+        }));
+
+        {% for sensor in '01' %}
+            setInterval(function(){
+                d = new Date();
+                $("#image_campoE{{sensor}}").attr("src", "http://webmet.ohmc.xyz/media/campo/CampoE{{sensor}}.png?"+d.getTime());
+            console.log('upload http://webmet.ohmc.xyz/media/campo/CampoE{{sensor}}.png?')
+            },1000*20)
+
+         {% endfor %}
+
+         });
+
+</script>
+
+{% endblock %}

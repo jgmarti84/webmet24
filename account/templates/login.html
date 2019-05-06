@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %} {% load staticfiles %}
+{% block extra_head %}<title>Login</title>{% endblock %}
+
+
+
+            {% block content %}
+            <ul id="tabs-swipe-demo tabs-fixed-width" class="tabs">
+                <li class="tab col s6"><a class="active" href="#test-swipe-1">Entrar</a></li>
+                <li class="tab col s6"><a href="#test-swipe-2">Registro</a></li>
+            </ul>
+
+            <div id="test-swipe-1" class="col s12 ">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a><br>
+                    <button type="submit" class="btn">Login</button>
+
+                </form>
+            </div>
+            <div id="test-swipe-2" class="col s12">
+                <form id="register-form" method="post">
+                    <div class="input-field">
+                        <input id="username" name="username" type="text">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="email" name="email" type="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="password1" name="password1" type="password">
+                        <label for="password1">Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="password2" name="password2" type="password">
+                        <label for="password2">Confirm password</label>
+                    </div>
+                    <input type="checkbox" id="tyc"/>
+                    <label for="tyc">Acepto <a href="{% url 'account:terms' %}">Terminos y condiciones</a></label>
+                    <button type="submit" id="btn" disabled class="btn">Signup</button>
+                </form>
+            </div>
+            {% endblock %}
+
+
+{% block script %}
+<script>
+    $('#tyc').click(function(){
+        $('#btn').attr('disabled', !$(this).is(":checked"));
+        $('#btn').attr('disabled', true);
+    });
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    $('#register-form').submit(function (e) {
+        e.preventDefault();
+        var data = new FormData($("#register-form").get(0));
+        data.append("csrfmiddlewaretoken", '{{ csrf_token }}');
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'account:signup' %}",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function () {
+                window.location.href = "{% url 'account:account_activation_sent' %}";
+            },
+            error: function (response) {
+                handleError(JSON.parse(response.responseText));
+            }
+        });
+    });
+    function handleError(data) {
+        $('#password1').empty();
+        $('#password2').empty();
+        $('.error').each(function (i, e) {
+            e.remove();
+        });
+        Materialize.toast(data.message, 5000);
+    }
+</script>
+{% endblock %}

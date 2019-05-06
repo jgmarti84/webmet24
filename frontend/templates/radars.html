@@ -1,0 +1,91 @@
+<!-- Capas -->
+<ul id="side-radares" class="side-nav side-radares">
+    <li><i class="material-icons orange-text right pointer btn_popup ">launch</i>
+    </li>
+    <li><a href="#!" class='orange-text'><i class="material-icons orange-text">clear_all</i>RADARES METEOROLÓGICOS</a>
+    </li>
+    <li>
+        <div class="divider orange "></div>
+    </li>
+    <br>
+    <div id="radares-div" >
+        <details open>
+            <summary style="padding-left: 10px">
+                <strong class="pointer" style="color: #0D47A1; font-size: 1em; font-family: 'Roboto', 'sans-serif'">Radares
+                    Meteorológicos</strong></summary>
+            <br>
+            <div id='layer-data-div'>
+                <div id="sortable_radares" style="padding-left: 3px; margin-top: 5px;">
+                    {% for radar in radares %}
+                    <div class="sortable" data-layer='{{prod.product_key}}' data-layer-z={{forloop.count}}>
+                        <span>{{radar.title}}</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" id="layer_selection_{{prod.product_key}}" class='layer_selection' data-layer='{{prod.product_key}}'/>
+                                <label for="layer_selection_{{prod.product_key}}"></label>
+                            </div>
+                            <div class="col s6 disabled" draggable="false">
+                                <p class="range-field disabled">
+                                    <input type="range" disabled min="0" value="100" max="100" step='1' class='layer_input' data-layer='{{prod.product_key}}' />
+                                </p>
+                            </div>
+                            <div class="col s2 disabled" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                                       data-tooltip="{{prod.description}}">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 disabled " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </details>
+        <details open>
+            <summary style="padding-left: 10px">
+                <strong class="pointer" style="color: #0D47A1; font-size: 1em; font-family: 'Roboto', 'sans-serif'">Productos de Radar</strong></summary>
+            <br>
+            <div id='layer-radar-div'>
+                <div id="polarimetrics_sorter" style="padding-left: 3px; margin-top: 5px;">
+                    {% for prod in radar_products %}
+                    <div class="sortable" data-layer='{{prod.product_key}}' data-layer-z={{forloop.count}}>
+                        <span>{{prod.product_title}}</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" id="layer_selection_{{prod.product_key}}" class='layer_selection' data-layer='{{prod.product_key}}'/>
+                                <label for="layer_selection_{{prod.product_key}}"></label>
+                            </div>
+                            <div class="col s6 disabled" draggable="false">
+                                <p class="range-field disabled">
+                                    <input type="range" disabled min="0" value="100" max="100" step='1' class='layer_input' data-layer='{{prod.product_key}}' />
+                                </p>
+                            </div>
+                            <div class="col s2 disabled" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                                       data-tooltip="{{prod.description}}">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 disabled " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </details>
+    </div>
+</ul>

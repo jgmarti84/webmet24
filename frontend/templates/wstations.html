@@ -1,0 +1,42 @@
+<!-- Estaciones esto me parece que ya esta -->
+<ul id="side-estaciones" class="side-nav side-estaciones">
+    <li>
+        <button data-position="right" data-delay="50"
+                    data-tooltip="Despegar ventana"
+                    class='btn-floating waves-effect waves-light grey-text green material-icons tooltipped btn_popup'>
+                <i class="material-icons">launch</i>
+            </button>
+
+<!--        <i class="material-icons yellow-text right btn_popup">launch</i>-->
+    </li>
+    <li><a href="#!" class='green-text'><i class="material-icons green-text">wb_sunny</i>
+        ESTACIONES METEOROLÓGICAS</a>
+    </li>
+    <li>
+        <div class="divider green "></div>
+    </li>
+    <div id="station-div">
+    {% for a in '123456789' %}
+    <ul class="card-estaciones sortable " >
+        <li class="row valign-wrapper pointer style='margin-bottom: 0px !important'">
+            <div class="col s3">
+                <input class='chk_station'
+                       data-station='station{{a}}'
+                       type="checkbox"
+                       checked
+                       id="chk_station{{ a }}">
+                <label for="chk_station{{ a }}"></label>
+            </div>
+            <div class="col s6">
+                <strong style="font-size: 1em">Estación 00{{a}}</strong>
+            </div>
+            <div class="col s3">
+                <a href="#!" class="secondary-content">
+                    <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                       data-tooltip="Esta es la estación 00{{a}}">info</i>
+                </a>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+</ul>

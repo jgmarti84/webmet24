@@ -1,0 +1,164 @@
+{% extends 'base_fe.html' %}
+{% load static %} {% load staticfiles %}
+
+{% block extra_head %}
+<title>Grupo Radar Cordoba</title>
+{% endblock %}
+
+
+{% block header %}
+
+<link rel="stylesheet" href="{% static 'css/ol.css' %}">
+<link rel="stylesheet" href="{% static 'css/ol3-geocoder.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/radar_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.css' %}">
+
+
+{% endblock %}
+{% block content %}
+
+<div id="gif_radar_cont">
+    <div id='gif_radar_img'>
+        <h5 style="font-size:10px;"><span id='loader_string'>Cargando</span><marquee style="width:15px;">...</marquee></h5>
+        <img src="{% static 'images/radar.gif' %}" width="85px"/>
+    </div>
+</div>
+<div id="data" class='' style="background-color: #fafafa">
+    <div class='row'>
+        <div class='col m5 hide-on-small-only'>
+            Rango seleccionado: <span id="date_range_from"></span> - <span id="date_range_to"></span>
+        </div>
+        <div class='col m5 s12'>
+            Mostrando:<span id='fecha-valor' class=''>22/05/17 00:00hs </span>
+            (Frame <span id='frame-valor'>1</span> de <span id='frame-max'>1</span>)
+        </div>
+        <div class='col m2 hide-on-small-only'>
+            <span class='right-align' id="mouse-position"></span>
+        </div>
+
+    </div>
+</div>
+
+{% include 'graphics.html' %}
+
+<div class='logo'>
+    <img class='hide-on-small-only' src="{% static 'images/icon.png' %}" width="150px">
+    <img class='hide-on-med-and-up' src="{% static 'images/icon.png' %}" width="  50px">
+</div>
+
+<div class="fixed-action-btn" style="z-index: 100000">
+    <a class="btn-floating btn-large blue">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-user" class="btn-floating cyan button-sidenave tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Configuración">
+                <i class="material-icons">settings</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#!" id='show_graficos' class="disabled btn-floating green tooltipped" data-position="left"
+               data-delay="50" data-tooltip="Gráficos">
+                <i class="material-icons">timeline</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-layers" class="btn-floating orange button-sidenave tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Capas">
+                <i class="material-icons">clear_all</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-estaciones" class="disabled btn-floating yellow button-sidenave tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Estaciones Meteorológicas">
+                <i class="material-icons">wb_sunny</i>
+            </a>
+        </li>
+        <li class="waves-effect waves-light">
+            <a href="#" data-activates="side-molino" class="disabled btn-floating red button-sidenave tooltipped"
+               data-position="left" data-delay="50"
+               data-tooltip="Molinos de campo eléctrico ">
+                <i class="material-icons" style="transform: rotate(45deg);">games</i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+{% include 'configuration.html' %}
+
+{% include 'layers.html' %}
+
+{% include 'wstations.html' %}
+
+{% include 'molino.html' %}
+
+<div id="map">
+    <div id="popup"></div>
+</div>
+<div id="popUpLayer" class="sortables windows row side-layers">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <i class="material-icons orange-text right pointer col s2 btn_close">⨯</i>
+            <i class="material-icons orange-text col s1">clear_all</i>
+            <a href="#!" class='orange-text col s9'>CAPAS DE VISUALIZACIÓN</a>
+        </div>
+        <div class="divider orange "></div>
+    </div>
+    <div id="contentLayer" class="row"></div>
+</div>
+<div id="popUpStation" class="sortables windows row side-estaciones">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <i class="material-icons yellow-text right pointer col s2 btn_close">⨯</i>
+            <i class="material-icons yellow-text col s1">clear_all</i>
+            <a href="#!" class='yellow-text col s9'>Estaciónes Meteorológicas</a>
+        </div>
+        <div class="divider yellow "></div>
+    </div>
+    <div id="contentStation" class="row"></div>
+</div>
+<div id="popUpMolino" class="sortables windows row side-molino">
+    <div id="popup_bar" class="windowsbar">
+        <div class="row">
+            <i class="material-icons red-text right pointer col s2 btn_close">⨯</i>
+            <i class="material-icons red-text col s1" style="transform: rotate(45deg);">games</i>
+            <a href="#!" class='red-text col s9'>Campo Molino Eléctrico</a>
+        </div>
+        <div class="divider red"></div>
+    </div>
+    <div id="contentMolino" class="row"></div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+
+var polarimetrics_vars = [];
+{% for prod in radar_products %}
+    polarimetrics_vars.push('{{prod.product_key}}');
+{% endfor %}
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/3.20.1/ol.js"></script>-->
+<script src="{% static 'js/ol-debug.js' %}"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/moments.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
+<script src="{% static 'js/charts.js' %}"></script>
+<script src="{% static 'js/ol3-geocoder.js' %}"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+<script src="{% static 'js/maps.js' %}"></script>
+<!--<script src="{% static 'js/molino.js' %}"></script>-->
+<!--<script src="{% static 'js/wstations.js' %}"></script>-->
+<script src="{% static 'js/graphic.js' %}"></script>
+<script src="{% static 'js/radares.js' %}"></script>
+<script src="{% static 'js/layer_events.js' %}"></script>
+{% endblock %}

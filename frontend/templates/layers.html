@@ -1,0 +1,347 @@
+{% load static %} {% load staticfiles %} {% load tags_vars %} {% load tags_radares %}
+{% asign_boolean_var "show_stations" as show_stations %}
+
+<!-- Capas -->
+<ul id="side-layers" class="side-nav side-layers">
+    <li>
+        <button data-position="right" data-delay="50"
+                data-tooltip="Despegar ventana"
+                class='btn-floating waves-effect waves-light grey-text orange material-icons tooltipped btn_popup'>
+            <i class="material-icons">launch</i>
+        </button>
+        <!--        <i class="material-icons orange-text right pointer btn_popup ">launch</i>-->
+    </li>
+    <li><a href="#!" class='orange-text'><i class="material-icons orange-text">clear_all</i>CAPAS DE VISUALIZACIÓN</a>
+    </li>
+    <li>
+        <div class="divider orange "></div>
+    </li>
+    <br>
+    <div id="layers-div" >
+        <details open>
+            <summary style="padding-left: 10px">
+                <strong class="pointer" style="color: #0D47A1; font-size: 1em; font-family: 'Roboto', 'sans-serif'">Datos
+                    Meteorológicos</strong></summary>
+            <br>
+            <div id='layer-data-div'>
+                <div id="sortable_layers" style="padding-left: 3px; margin-top: 5px;">
+                    <div class="sortable" data-layer='radar' data-layer-z='100'>
+                        <span>Topes de Nube</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" checked id="layer_selection_topes" class='layer_selection' data-layer='topes'/>
+                                <label for="layer_selection_topes"></label>
+                            </div>
+                            <div class="col s6" draggable="false">
+                                <p class="range-field">
+                                    <input disabled
+                                           type="range"
+                                           min="0" max="100" value="100"
+                                           step='1' class='layer_input'
+                                           data-layer='topes' />
+                                </p>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                       data-tooltip="Topes de Nube">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2"><span></span></div>
+                        </div>
+                    </div>
+
+                <div id="sortable_layers" style="padding-left: 3px; margin-top: 5px;">
+                    <div class="sortable" data-layer='radar' data-layer-z='100'>
+                        <span>Radares Meterológicos</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" checked id="layer_selection_radar" class='layer_selection' data-layer='radar'/>
+                                <label for="layer_selection_radar"></label>
+                            </div>
+                            <div class="col s6" draggable="false">
+                                <p class="range-field">
+                                    <input type="range" min="0" max="100" value="100" step='1' class='layer_input' data-layer='radar' />
+                                </p>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                       data-tooltip="Radares Meterológicos">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sortable" data-layer='wrf' data-layer-z='120'>
+                        <span>WRF</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" checked id="layer_selection_wrf" class='layer_selection' data-layer='wrf'/>
+                                <label for="layer_selection_wrf"></label>
+                            </div>
+                            <div class="col s6 " draggable="false">
+                                <p class="range-field">
+                                    <input type="range" min="0" value="100" max="100" step='1' class='layer_input' data-layer='wrf' />
+                                </p>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                       data-tooltip="WRF">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="sortable" data-layer='weather' data-layer-z='110'>
+                        <span>Estaciones Meterológicas</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" {% if not show_stations %} disabled {% else %} checked{% endif %}  id="layer_selection_weather" class='layer_selection' data-layer='weather'/>
+                                <label for="layer_selection_weather"></label>
+                            </div>
+                            <div class="col s6" draggable="false">
+                                <p class="range-field">
+                                    <input type="range" min="0" value="100" max="100" step='1' class='layer_input' data-layer='weather' />
+                                </p>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                       data-tooltip="Estaciones Meteorológicas">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sortable" data-layer='ce' data-layer-z='130'>
+                        <span>Campo Eléctrico</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input type="checkbox" disabled id="layer_selection_ce" class='layer_selection' data-layer='ce'/>
+                                <label for="layer_selection_ce"></label>
+                            </div>
+                            <div class="col s6 disabled" draggable="false">
+                                <p class="range-field">
+                                    <input type="range" disabled min="0" max="100" step='1' class='layer_input' data-layer='ce' />
+                                </p>
+                            </div>
+                            <div class="col s2 disabled" draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                       data-tooltip="Lorem ipsum a lot">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 disabled " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-sortable" data-layer='radio' data-layer-z='0'>
+                    <span>Radios de cobertura</span>
+                    <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                        <div class="col s2" draggable="false">
+                            <input type="checkbox" id="layer_selection_radar_radios" class='layer_selection' data-layer='radar_radios'/>
+                            <label for="layer_selection_radar_radios"></label>
+                        </div>
+                        <div class="col s6" draggable="false">
+                            <p class="range-field">
+                                <input disabled type="range" min="0" max="100" value="10" step='1' class='layer_input' data-layer='radar_radios' />
+                            </p>
+                        </div>
+                        <div class="col s2" draggable="false">
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons tooltipped" data-position="bottom" data-delay="50"
+                                   data-tooltip="Radios de cobertura">info</i>
+                            </a>
+                        </div>
+                        <div class="col s2 " draggable="false">
+                            <a href="#!" class="secondary-content">
+                                <i class="material-icons">reorder</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </details>
+        <details id='dropdown-prod-radar'>
+            <summary style="padding-left: 10px">
+                <strong class="pointer" style="color: #0D47A1; font-size: 1em; font-family: 'Roboto', 'sans-serif'">Productos de Radar</strong></summary>
+            <br>
+            <div id='layer-radar-div'>
+                <div id="polarimetrics_sorter" style="padding-left: 3px; margin-top: 5px;">
+                    {% for prod in radar_products %}
+                    <div class="sortable" data-layer='{{prod.product_key}}' data-layer-z={{forloop.count}}>
+                        <span> {{prod.product_title}}</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input {% if prod.see_in_open %}checked{% endif %} type="checkbox" id="layer_selection_{{prod.product_key}}" class='layer_selection' data-layer='{{prod.product_key}}' data-refresh='1'/>
+                                <label for="layer_selection_{{prod.product_key}}"></label>
+                            </div>
+                            <div class="col s6 {% if not prod.see_in_open %}disabled{% endif %}" draggable="false">
+                                <p class="range-field {% if not prod.see_in_open %}disabled{% endif %}">
+                                    <input type="range" {% if not prod.see_in_open %}disabled{% endif %} min="0" value="100" max="100" step='1' class='layer_input' data-layer='{{prod.product_key}}' />
+                                </p>
+                            </div>
+                            <div class="col s2 {% if not prod.see_in_open %}disabled{% endif %}" draggable="false">
+                                <a href="#!" onclick="$('#radar_products_references-{{prod.id}}').fadeIn(300)" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                                       data-tooltip="{{prod.product_description}}">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 {% if not prod.see_in_open  %}disabled{% endif %} " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </details>
+
+        <details id='dropdown-prod-wrf'>
+            <summary style="padding-left: 10px">
+                <strong class="pointer" style="color: #0D47A1; font-size: 1em; font-family: 'Roboto', 'sans-serif'">Productos WRF</strong></summary>
+            <br>
+            <div id='layer-radar-div'>
+                <div id="wrf_sorter" style="padding-left: 3px; margin-top: 5px;">
+                    {% for prod in wrf_products %}
+                    <div class="sortable" data-layer='{{prod.product_key}}' data-layer-z={{forloop.count}}>
+                        <span> {{prod.product_title}}</span>
+                        <div class="row valign-wrapper litle" style='margin-bottom: 0px !important'>
+                            <div class="col s2" draggable="false">
+                                <input {% if prod.see_in_open %}checked{% endif %} type="checkbox" id="layer_selection_{{prod.product_key}}" class='layer_selection' data-layer='{{prod.product_key}}'/>
+                                <label for="layer_selection_{{prod.product_key}}"></label>
+                            </div>
+                            <div class="col s6 {% if not prod.see_in_open %}disabled{% endif %}" draggable="false">
+                                <p class="range-field {% if not prod.see_in_open %}disabled{% endif %}">
+                                    <input type="range" {% if not prod.see_in_open %}disabled{% endif %} min="0" value="100" max="100" step='1' class='layer_input' data-layer='{{prod.product_key}}' />
+                                </p>
+                            </div>
+                            <div class="col s2 {% if not prod.see_in_open %}disabled{% endif %}" draggable="false">
+                                <a href="#!" onclick="$('#radar_products_references-{{prod.id}}').fadeIn(300)" class="secondary-content">
+                                    <i class="material-icons tooltipped" data-position="right" data-delay="50"
+                                       data-tooltip="{{prod.product_description}}">info</i>
+                                </a>
+                            </div>
+                            <div class="col s2 {% if not prod.see_in_open  %}disabled{% endif %} " draggable="false">
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">reorder</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </details>
+
+    </div>
+</ul>
+
+{% for prod in radar_products %}
+<div class='radar_products_references'
+     id='radar_products_references-{{prod.product_key}}'
+     {% if not prod.see_in_open %}style='display:none;'{% endif %}>
+    <!--
+<button data-position="top" data-delay="50"
+data-tooltip="Cerrar"
+oncontextmenu="$('#radar_products_references-{{prod.id}}').fadeOut(300)"
+class='btn-floating btn-close waves-effect waves-light grey material-icons tooltipped'>
+<i class="material-icons">close</i>
+</button>
+-->
+    {% if prod.references.count > 0 %}
+    <div class='reference_box tooltipped'
+         style='background-color: grey'
+         data-position="top"
+         data-delay="50"
+         data-tooltip="{{prod.product_title}}">
+        <b>?</b>
+    </div>
+    {% endif %}
+    <div class='row'>
+        {% for ref in prod.references.all %}
+        <div class='reference_box tooltipped'
+             style='background-color: {{ref.color}}; color: {{ref.color_font}}'
+             data-position="left"
+             data-delay="50"
+             data-tooltip="{{ref.title}}">
+            <b>{{ref.value|format_ref}}</b>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+{% endfor %}
+
+
+{% for prod in wrf_products %}
+<div class='wrf_products_references'
+     id='wrf_products_references-{{prod.product_key}}'
+     {% if not prod.see_in_open %}style='display:none;'{% endif %}>
+    <!--
+<button data-position="top" data-delay="50"
+data-tooltip="Cerrar"
+oncontextmenu="$('#radar_products_references-{{prod.id}}').fadeOut(300)"
+class='btn-floating btn-close waves-effect waves-light grey material-icons tooltipped'>
+<i class="material-icons">close</i>
+</button>
+-->
+    {% if prod.references.count > 0 %}
+    <div class='reference_box tooltipped'
+         style='background-color: grey'
+         data-position="top"
+         data-delay="50"
+         data-tooltip="{{prod.product_title}}">
+        <b>?</b>
+    </div>
+    {% endif %}
+    <div class='row'>
+        {% for ref in prod.references.all %}
+        <div class='reference_box tooltipped'
+             style='background-color: {{ref.color}}; color: {{ref.color_font}}'
+             data-position="left"
+             data-delay="50"
+             data-tooltip="{{ref.title}}">
+            <b>{{ref.value|format_ref}}</b>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+{% endfor %}
