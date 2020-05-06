@@ -252,12 +252,13 @@ body,
 #velocidad{
 /*    transform: rotateZ(270deg);*/
     position: fixed;
-    margin-left: 65%;
-    width: 200px;
+    margin-left: 39%;
+    width: 70px;
     height: 130px;
 /*    left: 85px;*/
-    bottom: 79px;
+    bottom: 44px;
     z-index: 99999;
+    font-size: 10px;
 }
 
 .wrf_products_references{
