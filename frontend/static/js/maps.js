@@ -18,7 +18,7 @@ var map = L.map('map', {
 //ESRI!
 var esri_map = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                         attribution: 'Tiles &copy; Esri &mdash; WEBMET BY GRC'
-                    });
+                    }).addTo(map);
 
 //var bingAerealLayer = L.tileLayer.bing({
 //    bingMapsKey:'AkRRGpVORFwhbF42RXM4uA7thHkAMd9zqC_-XqWCa2IECRRoGyCbyXnhOM1XNvjW',
@@ -36,13 +36,14 @@ var esri_map = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services
 //    zIndex: 1,
 //});
 
+/* para OSM descomentar esto
 var osmLayer = new L.TileLayer(
     'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom: 1,
         maxZoom: 19,
         attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     }).addTo(map);
-
+*/
 
 var argenmap = L.tileLayer('http://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{y}.png', {
     tms: true,
@@ -79,7 +80,8 @@ var base_layers = { 'esri_map':esri_map,
                     'ignLayer': capabase_ign,
                    'argenmap': argenmap,
                    'arcgis': arcgis,
-                   'osmLayer': osmLayer,
+                   //'osmLayer': osmLayer,  //para OSM descomentar esto
+
                    //'bingAerealLayer':bingAerealLayer,
                    //'bingAerealLayer_with_references':bingAerealLayer_with_references
                   };
@@ -89,12 +91,11 @@ var layer_control = new L.control.layers(null,null);
 
 L.control.scale().addTo(map);
 var osmGeocoder = new L.Control.OSMGeocoder({
-    collapsed: false, /* Whether its collapsed or not */
-    position: 'bottomright', /* The position of the control */
-    text: 'Buscar', /* The text of the submit button */
+    collapsed: false, // Whether its collapsed or not
+    position: 'bottomright', // The position of the control
+    text: 'Buscar', // The text of the submit button
     placeholder: 'Buscar'});
-
-map.addControl(osmGeocoder);
+map.addControl(osmGeocoder); 
 
 
 

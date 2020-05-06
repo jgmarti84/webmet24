@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from api_radares.models import Radar, RadarImage, RadarProduct
 from api_wrf.models import *
 
-@login_required(login_url='/account/login')
+# @login_required(login_url='/account/login')
 def home(request):
     context = {}
     context['radar_products'] = RadarProduct.objects.filter(enabled=True)

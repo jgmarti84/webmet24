@@ -5,8 +5,8 @@
 
     <li>
         <div class="userView">
-            <div class="background">
-                <img class='' src="{% static 'images/icon.png' %}">
+            <div class="background" style="padding-left: 20px">
+                <img class='' src="{% static 'images/icon.png' %}" width="200px">
             </div>
             <br>
             <!--            <span class="black-text name">Usuario logueado:  <a href='#!' class="black-text email"><b>{{ user.username }}</b></a></span>-->
@@ -93,25 +93,29 @@ class='layer_base_check' id="ign-check"
 -->
             <input class="with-gap" data-base-layer-check='esri_map' name="layer_base" type="radio"
                    class='layer_base_check' id="esri_map-check"
+                   checked
                    />
             <label for="esri_map-check">ESRI MAP</label><br>
 
+<!--
             <input class="with-gap" data-base-layer-check='arcgis' name="layer_base" type="radio"
                    class='layer_base_check' id="arcgis-check"
                    />
             <label for="arcgis-check">Instituto Geográfico Nacional (Arg.)(Arcgis Server)</label><br>
+-->
 
             <input class="with-gap" data-base-layer-check='argenmap' name="layer_base" type="radio"
                    class='layer_base_check' id="argen-check"
                    />
             <label for="argen-check">Instituto Geográfico Nacional (Arg.)(Geoserver)</label><br>
 
+<!--
             <input class="with-gap" data-base-layer-check='osmLayer' name="layer_base" type="radio"
                    class='layer_base_check' id="osm-check"
                    checked
                    />
             <label for="osm-check">Open Street Map</label><br>
-
+-->
 <!--
             <input class="with-gap" data-base-layer-check='bingAerealLayer' name="layer_base" type="radio"
                    class='layer_base_check' id="bing-aereal-check"
@@ -126,9 +130,6 @@ class='layer_base_check' id="ign-check"
                    />
             <label for="bing-aereal-with-ref-check" title='Bing: Mapa Terrestre con referencias'>Bing: Mapa Terrestre (c/Ref)</label><br>
 -->
-
-
-
         </p>
     </div>
 

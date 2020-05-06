@@ -42,6 +42,16 @@ body,
     z-index: 9999;
 }
 
+#botones_small {
+    position: fixed;
+/*    width: 50%;*/
+    margin-left: 10%;
+    margin-bottom: 0;
+    width: 220px;
+    bottom: 30px;
+    z-index: 9999;
+}
+
 #fecha {
     position: absolute;
     margin: 0 auto;
@@ -130,10 +140,25 @@ body,
 .logo {
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 7px;
     width: 200px;
     z-index: 998;
 }
+.logo_ohmc {
+    position: absolute;
+    left: 20px;
+    top: 92px;
+    width: 200px;
+    z-index: 998;
+}
+.logo_inst {
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    height: 140px;
+    z-index: 998;
+}
+
 
 .logout{
     position: fixed;
