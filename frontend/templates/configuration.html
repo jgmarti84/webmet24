@@ -85,17 +85,39 @@
     <br>
     <div class='container'>
         <p>
-            <!--
-<input class="with-gap" data-base-layer-check='ignLayer' name="layer_base" type="radio"
-class='layer_base_check' id="ign-check"
-/>
-<label for="ign-check">Instituto Geográfico Nacional (Arg.)</label><br>
--->
+
+            <input class="with-gap" data-base-layer-check='osmLayer' name="layer_base" type="radio"
+                class='layer_base_check' id="osm-check"
+                checked
+                />
+            <label for="osm-check">Open Street Map</label><br>
+
             <input class="with-gap" data-base-layer-check='esri_map' name="layer_base" type="radio"
                    class='layer_base_check' id="esri_map-check"
-                   checked
                    />
-            <label for="esri_map-check">ESRI MAP</label><br>
+            <label for="esri_map-check">ESRI Mapa</label><br>
+
+            <input class="with-gap" data-base-layer-check='esri_sat' name="layer_base" type="radio"
+                   class='layer_base_check' id="esri_sat-check"
+                   />
+            <label for="esri_sat-check">ESRI Satelital</label><br>            
+
+            <input class="with-gap" data-base-layer-check='esri_topo' name="layer_base" type="radio"
+                   class='layer_base_check' id="esri_topo-check"
+                   />
+            <label for="esri_topo-check">ESRI Topográfico</label><br>            
+            
+            <input class="with-gap" data-base-layer-check='argenmap' name="layer_base" type="radio"
+                   class='layer_base_check' id="argen-check"
+                   />
+            <label for="argen-check">Instituto Geográfico Nacional (Arg.)(Geoserver)</label><br>
+
+<!--
+            <input class="with-gap" data-base-layer-check='ignLayer' name="layer_base" type="radio"
+                class='layer_base_check' id="ign-check"
+                />
+            <label for="ign-check">Instituto Geográfico Nacional (Arg.)</label><br>
+-->
 
 <!--
             <input class="with-gap" data-base-layer-check='arcgis' name="layer_base" type="radio"
@@ -104,18 +126,6 @@ class='layer_base_check' id="ign-check"
             <label for="arcgis-check">Instituto Geográfico Nacional (Arg.)(Arcgis Server)</label><br>
 -->
 
-            <input class="with-gap" data-base-layer-check='argenmap' name="layer_base" type="radio"
-                   class='layer_base_check' id="argen-check"
-                   />
-            <label for="argen-check">Instituto Geográfico Nacional (Arg.)(Geoserver)</label><br>
-
-<!--
-            <input class="with-gap" data-base-layer-check='osmLayer' name="layer_base" type="radio"
-                   class='layer_base_check' id="osm-check"
-                   checked
-                   />
-            <label for="osm-check">Open Street Map</label><br>
--->
 <!--
             <input class="with-gap" data-base-layer-check='bingAerealLayer' name="layer_base" type="radio"
                    class='layer_base_check' id="bing-aereal-check"

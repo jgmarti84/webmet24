@@ -1,32 +1,41 @@
-version: '2.0'
-
+version: '3.4'
 services:
-
-  admindb:
+  proxy:
+    build:
+      context: .
+      dockerfile: ./deploy/nginx/Dockerfile
     restart: always
-    image: adminer
+    container_name: nginx_webmet
     depends_on:
-    - database
+      - webmet
     ports:
-    - "8003:8080"
-
+      - "0.0.0.0:85:80"
   database:
+    # image: postgres
+    image: postgres:11.3
     restart: always
-    image: postgres
-    volumes:
-    - ./database:/var/lib/postgresql/data
     environment:
     - POSTGRES_PASSWORD=gu3bm3t
     - POSTGRES_USER=webmet
     - POSTGRES_DB=webmet
-
+    - PGDATA=/var/lib/postgresql/data
+    volumes:
+    - db_data:/var/lib/postgresql
+    - db_data2:/var/lib/postgresql/data
   webmet:
-    restart: always
-    image: djwebmet:latest
-    depends_on:
-    - database
+    build: .
     ports:
-    - "8002:80"
+    - "8005:8000"
+    # environment:
+    #   - DEBUG=True
+    #   - DOMAIN=localhost
     volumes:
     - .:/app/website
-    - ~/new_radars_pngs:/import_images
+    - ../genpro_radares/test_data/genpro_product_outputs:/app/website/media/radares/images/
+    depends_on:
+    - database
+    restart: always
+
+volumes: 
+  db_data:
+  db_data2: {}

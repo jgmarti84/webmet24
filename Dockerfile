@@ -1,11 +1,5 @@
 FROM python:2.7-alpine
 
-MAINTAINER "kaajavi"
-LABEL project="docker-django"
-LABEL version = "1.0.0"
-LABEL author_email="kaajavi@gmail.com"
-
-
 RUN apk add --update \
     mariadb-dev \
     supervisor \ 
@@ -29,57 +23,17 @@ RUN apk add --update \
     postgresql-client \
     postgresql-dev
 
-
-    
-#ENV LIBRARY_PATH=/lib:/usr/lib
-
-# Install nginx
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.3/main" >> /etc/apk/repositories && \
-    apk add --update nginx=1.8.1-r2 && \
-    rm -rf /var/cache/apk/*
- 
-  
-RUN rm -rf /var/cache/apk/* 
-  
-RUN chown -R nginx:www-data /var/lib/nginx
-
-#RUN pip install https://github.com/unbit/uwsgi/archive/uwsgi-2.0.zip#egg=uwsgi
-
 RUN mkdir /app
 
-ADD ./supervisord/ /app/supervisord
-ADD ./nginx/ /app/nginx
-ADD ./gunicorn/ /app/gunicorn
-ADD ./website/ /app/website
+COPY ./ /app/website
 
-RUN pip install gunicorn
-
-
-RUN chmod +x /app/gunicorn/gunicorn_start
-
-#RUN pip install -r /app/website/requeriments.txt
+RUN pip install --upgrade pip
+RUN pip install -r /app/website/deploy/requirements.txt
 
 RUN mkdir /app/logs
 RUN chmod 777 /app/logs -R 
 RUN mkdir /app/run
 
-RUN rm /etc/supervisord.conf
-RUN ln -s /app/supervisord/supervisord.conf /etc/
-
-#Project staticfiles
-#RUN python /app/website/manage.py collectstatic --noinput #PAra hacer un collectstatic y sacar los archivos estaticos afuera
-RUN chown -R nginx:www-data /app/website/static #Cambiar los permisos de las carpetas
-RUN chown -R nginx:www-data /app/website/media #Cambiar los permisos de las carpetas
-
-# Add the files Nginx
-ADD nginx/etc/nginx /etc/nginx
-ADD nginx/etc/services.d /services/services.d
-ADD nginx/usr /usr
-
-COPY entry.sh /entry.sh
-RUN chmod +x /entry.sh
-
-EXPOSE 80 443
-
-CMD ["supervisord", "-n"]
+WORKDIR /app/website/
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 

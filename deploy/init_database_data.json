@@ -1,0 +1,2285 @@
+[
+{
+    "model": "api_radares.radar",
+    "pk": "AR5",
+    "fields": {
+        "title": "Pergamino",
+        "description": "Radar Doppler Polarizaci\u00f3n Simple",
+        "center_lat": "-33.94612000",
+        "center_long": "-60.56260000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-31.7558357700",
+        "point1_long": "-57.8983503500",
+        "point2_lat": "-36.1094295100",
+        "point2_long": "-63.2268496500"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "AR7",
+    "fields": {
+        "title": "Parana",
+        "description": "Gematronik Doppler Dual-pol",
+        "center_lat": "-31.84849000",
+        "center_long": "-60.53724000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-29.6594961100",
+        "point1_long": "-57.9401683600",
+        "point2_lat": "-34.0125378700",
+        "point2_long": "-63.1343116400"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "AR8",
+    "fields": {
+        "title": "Anguil",
+        "description": "Gematronik Doppler Dual-pol",
+        "center_lat": "-36.53965000",
+        "center_long": "-63.98984000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-34.3476755100",
+        "point1_long": "-61.2323026600",
+        "point2_lat": "-38.7020196600",
+        "point2_long": "-66.7473773400"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA1",
+    "fields": {
+        "title": "Cordoba",
+        "description": "Radar RMA1",
+        "center_lat": "-31.44138889",
+        "center_long": "-64.19194444",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-29.2912400000",
+        "point1_long": "-61.7050590000",
+        "point2_lat": "-33.5351190000",
+        "point2_long": "-66.6787800000"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA10",
+    "fields": {
+        "title": "Espora",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-38.73426000",
+        "center_long": "-62.16341000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-36.5500161400",
+        "point1_long": "-59.3292016100",
+        "point2_lat": "-40.8868116300",
+        "point2_long": "-64.9976183900"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA11",
+    "fields": {
+        "title": "TermasRioHondo",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-27.50260000",
+        "center_long": "-64.90575000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-25.3253197300",
+        "point1_long": "-62.4380372100",
+        "point2_lat": "-29.6590762000",
+        "point2_long": "-67.3734627900"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA12",
+    "fields": {
+        "title": "Bariloche",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-41.13944000",
+        "center_long": "-71.14944000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-39.8027066300",
+        "point1_long": "-69.3625682900",
+        "point2_lat": "-42.4629364800",
+        "point2_long": "-72.9363117100"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA2",
+    "fields": {
+        "title": "Ezeiza",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-34.80082000",
+        "center_long": "-58.51557000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-32.6238474500",
+        "point1_long": "-55.8391816300",
+        "point2_lat": "-36.9503064100",
+        "point2_long": "-61.1919583700"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA3",
+    "fields": {
+        "title": "Las Lomitas",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-24.73028000",
+        "center_long": "-60.55139000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-22.5545264400",
+        "point1_long": "-58.1466679700",
+        "point2_lat": "-26.8876087400",
+        "point2_long": "-62.9561120300"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA4",
+    "fields": {
+        "title": "Resistencia",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-27.45167000",
+        "center_long": "-59.05083000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-25.2744181000",
+        "point1_long": "-56.5843565100",
+        "point2_lat": "-29.6081623801",
+        "point2_long": "-61.5173034900"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA5",
+    "fields": {
+        "title": "Bernardo de Irigoyen",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-26.27812000",
+        "center_long": "-53.67085000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-24.1015181100",
+        "point1_long": "-51.2320639500",
+        "point2_lat": "-28.4349800000",
+        "point2_long": "-56.1096360500"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA6",
+    "fields": {
+        "title": "Mar del Plata",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-37.91306000",
+        "center_long": "-57.52783000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-35.7340259500",
+        "point1_long": "-54.7339123000",
+        "point2_lat": "-40.0614131800",
+        "point2_long": "-60.3217477000"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA7",
+    "fields": {
+        "title": "Neuquen",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-38.87662000",
+        "center_long": "-68.14489000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-36.6969063600",
+        "point1_long": "-65.3107261100",
+        "point2_lat": "-41.0246163600",
+        "point2_long": "-70.9790538900"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA8",
+    "fields": {
+        "title": "Mercedes",
+        "description": "RMA Doppler Dual-pol - Corrientes",
+        "center_lat": "-29.19591002",
+        "center_long": "-58.04485001",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-27.0222774700",
+        "point1_long": "-55.5394406500",
+        "point2_lat": "-31.3473284000",
+        "point2_long": "-60.5502593500"
+    }
+},
+{
+    "model": "api_radares.radar",
+    "pk": "RMA9",
+    "fields": {
+        "title": "Rio Grande",
+        "description": "RMA Doppler Dual-pol",
+        "center_lat": "-67.74426000",
+        "center_long": "-53.78399000",
+        "img_radio": 240,
+        "is_active": true,
+        "point1_lat": "-52.4431039700",
+        "point1_long": "-65.4422034000",
+        "point2_lat": "-55.1045875600",
+        "point2_long": "-70.0463166000"
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 1,
+    "fields": {
+        "product_key": "COLMAX",
+        "product_title": "COLMAX(Z)",
+        "product_description": "Este es un producto colmax tipo TH",
+        "enabled": true,
+        "see_in_open": true
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 2,
+    "fields": {
+        "product_key": "RHOHV",
+        "product_title": "RHOHV",
+        "product_description": "Coeficiente de correlacion co-polar.",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 3,
+    "fields": {
+        "product_key": "TH",
+        "product_title": "Z@0.5",
+        "product_description": "Factor de Reflectividad Equivalente",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 4,
+    "fields": {
+        "product_key": "PHIDP",
+        "product_title": "PHIDP",
+        "product_description": "Diferencia de Propagaci\u00f3n de Fase",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 6,
+    "fields": {
+        "product_key": "TV",
+        "product_title": "TV",
+        "product_description": "Factor de Reflectividad Vertical",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 7,
+    "fields": {
+        "product_key": "VRAD",
+        "product_title": "VRAD",
+        "product_description": "Velocidad Doppler",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 8,
+    "fields": {
+        "product_key": "WRAD",
+        "product_title": "WRAD",
+        "product_description": "Ancho Espectral",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 16,
+    "fields": {
+        "product_key": "THo",
+        "product_title": "TH sf",
+        "product_description": "TH sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 17,
+    "fields": {
+        "product_key": "PHIDPo",
+        "product_title": "PHIDP sf",
+        "product_description": "PHIDP sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 18,
+    "fields": {
+        "product_key": "TVo",
+        "product_title": "TV sf",
+        "product_description": "TV sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 19,
+    "fields": {
+        "product_key": "COLMAXo",
+        "product_title": "COLMAX sf",
+        "product_description": "COLMAX sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 20,
+    "fields": {
+        "product_key": "RHOHVo",
+        "product_title": "RHOHV@0.5",
+        "product_description": "Coeficiente de correlaci\u00f3n co-polar",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 21,
+    "fields": {
+        "product_key": "TDRo",
+        "product_title": "ZDR sf",
+        "product_description": "ZDR sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 22,
+    "fields": {
+        "product_key": "VRADo",
+        "product_title": "VRADo sf",
+        "product_description": "VRAD sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 23,
+    "fields": {
+        "product_key": "WRADo",
+        "product_title": "WRAD sf",
+        "product_description": "WRAD sin filtrar",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 24,
+    "fields": {
+        "product_key": "MOSAICOo",
+        "product_title": "MOSAICO sf",
+        "product_description": "MOSAICO sin filtros",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 25,
+    "fields": {
+        "product_key": "MOSAICO",
+        "product_title": "MOSAICO",
+        "product_description": "MOSAICO",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 26,
+    "fields": {
+        "product_key": "KDP",
+        "product_title": "KDP@0.5",
+        "product_description": "Diferencial de fase espec\u00edfico",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.radarproduct",
+    "pk": 27,
+    "fields": {
+        "product_key": "TDR",
+        "product_title": "ZDR@0.5",
+        "product_description": "Reflectividad diferencial",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "title": "Neblina",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#95b4dc",
+        "color_font": "#FFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 3,
+    "fields": {
+        "product": 1,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#00E68A",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 4,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 70.0,
+        "color": "#FF29E3",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 5,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 60.0,
+        "color": "#FF2A98",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 7,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 50.0,
+        "color": "#FF2A0C",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 9,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 40.0,
+        "color": "#f7a600",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 11,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#EAF328",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 13,
+    "fields": {
+        "product": 1,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#00AD5A",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 15,
+    "fields": {
+        "product": 2,
+        "title": "Blanco No Meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.3,
+        "color": "#2948f7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 17,
+    "fields": {
+        "product": 2,
+        "title": "Blanco No Meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.7,
+        "color": "#4fc7ff",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 18,
+    "fields": {
+        "product": 2,
+        "title": "Cambio de fase",
+        "description": "",
+        "unit": "",
+        "value": 0.8,
+        "color": "#7be3fb",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 19,
+    "fields": {
+        "product": 2,
+        "title": "Cambio de fase",
+        "description": "",
+        "unit": "",
+        "value": 0.85,
+        "color": "#04cf00",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 20,
+    "fields": {
+        "product": 2,
+        "title": "Part\u00edculas agregadas / Nieve derretida",
+        "description": "",
+        "unit": "",
+        "value": 0.9,
+        "color": "#fffd02",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 21,
+    "fields": {
+        "product": 2,
+        "title": "Granizo y agua",
+        "description": "",
+        "unit": "",
+        "value": 0.95,
+        "color": "#fc886f",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 22,
+    "fields": {
+        "product": 2,
+        "title": "Nieve derritiendo",
+        "description": "",
+        "unit": "",
+        "value": 0.98,
+        "color": "#ab0000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 23,
+    "fields": {
+        "product": 2,
+        "title": "Agua / Nieve",
+        "description": "",
+        "unit": "",
+        "value": 0.99,
+        "color": "#bc0033",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 24,
+    "fields": {
+        "product": 2,
+        "title": "Agua",
+        "description": "",
+        "unit": "",
+        "value": 1.0,
+        "color": "#ff00ff",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 25,
+    "fields": {
+        "product": 2,
+        "title": "Blanco Meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.5,
+        "color": "#458cd4",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 29,
+    "fields": {
+        "product": 3,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -30.0,
+        "color": "#000080",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 31,
+    "fields": {
+        "product": 3,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -10.0,
+        "color": "#f0f6f2",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 32,
+    "fields": {
+        "product": 3,
+        "title": "Neblina",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#95b4dc",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 33,
+    "fields": {
+        "product": 3,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#3df783",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 34,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#1fba58",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 35,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#ade215",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 36,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 40.0,
+        "color": "#f7a600",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 37,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 50.0,
+        "color": "#fd3100",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 38,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 60.0,
+        "color": "#ff0064",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 39,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 70.0,
+        "color": "#ff00ff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 40,
+    "fields": {
+        "product": 4,
+        "title": "-",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 42,
+    "fields": {
+        "product": 6,
+        "title": "-",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 43,
+    "fields": {
+        "product": 7,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -30.0,
+        "color": "#00ff00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 44,
+    "fields": {
+        "product": 8,
+        "title": "-",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 100,
+    "fields": {
+        "product": 1,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -10.0,
+        "color": "#f0f6f2",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 111,
+    "fields": {
+        "product": 24,
+        "title": "AA",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 112,
+    "fields": {
+        "product": 24,
+        "title": "BB",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 113,
+    "fields": {
+        "product": 24,
+        "title": "CC",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#000000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 114,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 70.0,
+        "color": "#ff00ff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 115,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 60.0,
+        "color": "#ff0064",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 116,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 50.0,
+        "color": "#fd3100",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 117,
+    "fields": {
+        "product": 20,
+        "title": "Eco no meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.5,
+        "color": "#458cd4",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 118,
+    "fields": {
+        "product": 20,
+        "title": "Eco no meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.7,
+        "color": "#4fc7ff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 119,
+    "fields": {
+        "product": 20,
+        "title": "Eco no meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.8,
+        "color": "#7be3fb",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 120,
+    "fields": {
+        "product": 20,
+        "title": "Banda brillante",
+        "description": "",
+        "unit": "",
+        "value": 0.85,
+        "color": "#04cf00",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 121,
+    "fields": {
+        "product": 20,
+        "title": "Banda brillante",
+        "description": "",
+        "unit": "",
+        "value": 0.9,
+        "color": "#fffd02",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 122,
+    "fields": {
+        "product": 20,
+        "title": "Granizo",
+        "description": "",
+        "unit": "",
+        "value": 0.95,
+        "color": "#fc886f",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 123,
+    "fields": {
+        "product": 20,
+        "title": "Gotas de agua de varios tamanios",
+        "description": "",
+        "unit": "",
+        "value": 0.98,
+        "color": "#ab0000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 124,
+    "fields": {
+        "product": 20,
+        "title": "Agua",
+        "description": "",
+        "unit": "",
+        "value": 0.995,
+        "color": "#bc0033",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 125,
+    "fields": {
+        "product": 20,
+        "title": "Agua",
+        "description": "",
+        "unit": "",
+        "value": 1.0,
+        "color": "#ff00ff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 126,
+    "fields": {
+        "product": 20,
+        "title": "Eco no meteorologico",
+        "description": "",
+        "unit": "",
+        "value": 0.3,
+        "color": "#2948f7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 127,
+    "fields": {
+        "product": 7,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -20.0,
+        "color": "#00cf00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 128,
+    "fields": {
+        "product": 7,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -10.0,
+        "color": "#009f00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 129,
+    "fields": {
+        "product": 7,
+        "title": "tangencial al radar",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#200b0b",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 130,
+    "fields": {
+        "product": 7,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#a40000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 131,
+    "fields": {
+        "product": 7,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#d40000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 132,
+    "fields": {
+        "product": 7,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#ff0000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 133,
+    "fields": {
+        "product": 22,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#ff0000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 134,
+    "fields": {
+        "product": 22,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#d40000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 135,
+    "fields": {
+        "product": 22,
+        "title": "m/s desde el radar",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#a40000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 136,
+    "fields": {
+        "product": 22,
+        "title": "tangencial al radar",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#200b0b",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 137,
+    "fields": {
+        "product": 22,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -10.0,
+        "color": "#009f00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 138,
+    "fields": {
+        "product": 22,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -20.0,
+        "color": "#00cf00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 139,
+    "fields": {
+        "product": 22,
+        "title": "m/s hacia el radar",
+        "description": "",
+        "unit": "",
+        "value": -30.0,
+        "color": "#00ff00",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 140,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 40.0,
+        "color": "#f7a600",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 141,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#ade215",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 142,
+    "fields": {
+        "product": 25,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#1fba58",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 143,
+    "fields": {
+        "product": 25,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#3df783",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 144,
+    "fields": {
+        "product": 25,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#95b4dc",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 149,
+    "fields": {
+        "product": 26,
+        "title": "Hielo recubierto en agua",
+        "description": "",
+        "unit": "",
+        "value": 7.0,
+        "color": "#ff00ff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 150,
+    "fields": {
+        "product": 26,
+        "title": "Lluvia muy intensa",
+        "description": "",
+        "unit": "",
+        "value": 6.0,
+        "color": "#ff0053",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 151,
+    "fields": {
+        "product": 26,
+        "title": "Lluvia muy intensa",
+        "description": "",
+        "unit": "",
+        "value": 5.0,
+        "color": "#fb4a00",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 152,
+    "fields": {
+        "product": 26,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 4.0,
+        "color": "#f5cc00",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 153,
+    "fields": {
+        "product": 26,
+        "title": "Lluvia moderada/intensa",
+        "description": "",
+        "unit": "",
+        "value": 3.0,
+        "color": "#2cac3b",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 154,
+    "fields": {
+        "product": 26,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 2.0,
+        "color": "#38dc70",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 155,
+    "fields": {
+        "product": 26,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 1.0,
+        "color": "#769ed5",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 156,
+    "fields": {
+        "product": 26,
+        "title": "Granizo",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#dce7ed",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 159,
+    "fields": {
+        "product": 27,
+        "title": "Lluvia muy intensa / Eco Biologico",
+        "description": "",
+        "unit": "",
+        "value": 5.5,
+        "color": "#F9EA3C",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 160,
+    "fields": {
+        "product": 27,
+        "title": "Lluvia muy intensa",
+        "description": "",
+        "unit": "",
+        "value": 4.0,
+        "color": "#489D39",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 161,
+    "fields": {
+        "product": 27,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 3.0,
+        "color": "#00FFFF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 162,
+    "fields": {
+        "product": 27,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 2.5,
+        "color": "#66b3df",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 163,
+    "fields": {
+        "product": 27,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 1.5,
+        "color": "#0055FF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 164,
+    "fields": {
+        "product": 27,
+        "title": "Granizo / Llovizna / Nieve",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#b7b7b7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.reference",
+    "pk": 166,
+    "fields": {
+        "product": 27,
+        "title": "Eco Biologico / Ruido",
+        "description": "",
+        "unit": "",
+        "value": 7.0,
+        "color": "#ff0064",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_radares.volumen",
+    "pk": 1,
+    "fields": {
+        "value": 4
+    }
+},
+{
+    "model": "api_radares.volumen",
+    "pk": 2,
+    "fields": {
+        "value": 2
+    }
+},
+{
+    "model": "api_radares.volumen",
+    "pk": 3,
+    "fields": {
+        "value": 3
+    }
+},
+{
+    "model": "api_radares.volumen",
+    "pk": 4,
+    "fields": {
+        "value": 1
+    }
+},
+{
+    "model": "api_radares.volumen",
+    "pk": 7,
+    "fields": {
+        "value": 5
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0122",
+    "fields": {
+        "description": "#Vol1 240km (TODAS) // Vol2 200km (TODAS)       // Vol3 140km (TODAS)",
+        "volumenes": [
+            4
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0123",
+    "fields": {
+        "description": "---",
+        "volumenes": [
+            1
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0200",
+    "fields": {
+        "description": "Ultima estrategia SMN para RMA4",
+        "volumenes": [
+            4
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0201",
+    "fields": {
+        "description": "Doppler sin Filtro de Ruido",
+        "volumenes": [
+            3
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0216",
+    "fields": {
+        "description": "STAGGERED MDP",
+        "volumenes": [
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0301",
+    "fields": {
+        "description": "RELAMPAGO",
+        "volumenes": [
+            4
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0302",
+    "fields": {
+        "description": "STAGGERED",
+        "volumenes": [
+            3
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "0303",
+    "fields": {
+        "description": "STAGGERED",
+        "volumenes": [
+            7
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "1000",
+    "fields": {
+        "description": "#Vol1 480km (DBZH)  // Vol2 240km (DBZH, VRAD)  // Vol3 240km (DBZH, VRAD)  Error sweeps distinto rango solo AR1 .",
+        "volumenes": [
+            3
+        ]
+    }
+},
+{
+    "model": "api_radares.estrategia",
+    "pk": "9005",
+    "fields": {
+        "description": "#Vol1 240km (TODAS) // Vol2 180km (TODAS)       // Vol3 480km (TH,TV,CM)    // Vol04 240km (TODAS) Error sweeps distinto rango.",
+        "volumenes": [
+            4
+        ]
+    }
+},
+{
+    "model": "api_wrf.wrfproduct",
+    "pk": 1,
+    "fields": {
+        "product_key": "t2",
+        "product_title": "Temperatura WRF",
+        "product_description": "Temperatura modelada en WRF, en grados Celsius",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_wrf.wrfproduct",
+    "pk": 2,
+    "fields": {
+        "product_key": "wdir10",
+        "product_title": "Direccion Viento WRF",
+        "product_description": "Direcci\u00f3n e intensidad de viento. Colores m\u00e1s c\u00e1lidos indican vientos m\u00e1s intensos.",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_wrf.wrfproduct",
+    "pk": 3,
+    "fields": {
+        "product_key": "max_dbz",
+        "product_title": "COLMAX_WRF",
+        "product_description": "Modelacion del producto COLMAX medido por un radar expresado en dB",
+        "enabled": true,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_wrf.wrfproduct",
+    "pk": 5,
+    "fields": {
+        "product_key": "prec",
+        "product_title": "Precipitacion",
+        "product_description": "Tasa de lluvia instantanea",
+        "enabled": false,
+        "see_in_open": false
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 39.0,
+        "color": "#ADAAAD",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 2,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 39.0,
+        "color": "#C60000",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 3,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 36.0,
+        "color": "#E71400",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 7,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 33.0,
+        "color": "#FF3000",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 8,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#FF6100",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 9,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 27.0,
+        "color": "#FFA200",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 10,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 24.0,
+        "color": "#FFC339",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 11,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 21.0,
+        "color": "#FFEB7B",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 12,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 18.0,
+        "color": "#B4F2FF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 13,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 15.0,
+        "color": "#94D3FF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 14,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 12.0,
+        "color": "#7BBAFF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 15,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 9.0,
+        "color": "#52A6F7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 16,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 6.0,
+        "color": "#3996F7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 17,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 3.0,
+        "color": "#2982F7",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 18,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#186DEF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 19,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": -3.0,
+        "color": "#1065D6",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 20,
+    "fields": {
+        "product": 1,
+        "title": "\u00b0C",
+        "description": "",
+        "unit": "",
+        "value": -6.0,
+        "color": "#FF",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 29,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 70.0,
+        "color": "#800000",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 30,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia muy intensa y granizo",
+        "description": "",
+        "unit": "",
+        "value": 60.0,
+        "color": "#f30900",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 31,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 50.0,
+        "color": "#ff6800",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 33,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 40.0,
+        "color": "#ffc600",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 34,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 30.0,
+        "color": "#ceff29",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 35,
+    "fields": {
+        "product": 3,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 20.0,
+        "color": "#7bff7b",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 36,
+    "fields": {
+        "product": 3,
+        "title": "LLovizna",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#29ffce",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 37,
+    "fields": {
+        "product": 3,
+        "title": "Neblina",
+        "description": "",
+        "unit": "",
+        "value": 0.0,
+        "color": "#00b3ff",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 38,
+    "fields": {
+        "product": 3,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -10.0,
+        "color": "#004cff",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 39,
+    "fields": {
+        "product": 3,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -20.0,
+        "color": "#0000f3",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 40,
+    "fields": {
+        "product": 3,
+        "title": "Nubes no precipitantes",
+        "description": "",
+        "unit": "",
+        "value": -30.0,
+        "color": "#000080",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 41,
+    "fields": {
+        "product": 2,
+        "title": "Norte",
+        "description": "",
+        "unit": "",
+        "value": 360.0,
+        "color": "#E71400",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 42,
+    "fields": {
+        "product": 2,
+        "title": "Oeste",
+        "description": "",
+        "unit": "",
+        "value": 270.0,
+        "color": "#FFFFFF",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 43,
+    "fields": {
+        "product": 2,
+        "title": "Sur",
+        "description": "",
+        "unit": "",
+        "value": 180.0,
+        "color": "#52A6F6",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 44,
+    "fields": {
+        "product": 2,
+        "title": "Este",
+        "description": "",
+        "unit": "",
+        "value": 90.0,
+        "color": "#FFFFFF",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 57,
+    "fields": {
+        "product": 5,
+        "title": "Diluvio",
+        "description": "",
+        "unit": "",
+        "value": 250.0,
+        "color": "#ADAAAD",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 58,
+    "fields": {
+        "product": 5,
+        "title": "Diluvio",
+        "description": "",
+        "unit": "",
+        "value": 250.0,
+        "color": "#A500CE",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 59,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia muy intensa",
+        "description": "",
+        "unit": "",
+        "value": 200.0,
+        "color": "#AD82D6",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 60,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia muy intensa",
+        "description": "",
+        "unit": "",
+        "value": 150.0,
+        "color": "#C60000",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 61,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia intensa",
+        "description": "",
+        "unit": "",
+        "value": 100.0,
+        "color": "#E71400",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 62,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 80.0,
+        "color": "#FF3000",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 63,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 60.0,
+        "color": "#FF6100",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 64,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia moderada",
+        "description": "",
+        "unit": "",
+        "value": 50.0,
+        "color": "#FFA200",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 65,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 40.0,
+        "color": "#FFC339",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 66,
+    "fields": {
+        "product": 5,
+        "title": "Lluvia leve",
+        "description": "",
+        "unit": "",
+        "value": 25.0,
+        "color": "#31D339",
+        "color_font": "#FFFFFF"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 67,
+    "fields": {
+        "product": 5,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 10.0,
+        "color": "#00D38C",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "api_wrf.reference",
+    "pk": 68,
+    "fields": {
+        "product": 5,
+        "title": "Llovizna",
+        "description": "",
+        "unit": "",
+        "value": 5.0,
+        "color": "#94D3FF",
+        "color_font": "#0"
+    }
+},
+{
+    "model": "variables.variable",
+    "pk": 1,
+    "fields": {
+        "key": "timeload",
+        "value": "10"
+    }
+},
+{
+    "model": "variables.variable",
+    "pk": 10,
+    "fields": {
+        "key": "show_stations",
+        "value": "0"
+    }
+}
+]
