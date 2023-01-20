@@ -23,25 +23,24 @@ services:
         - "traefik.http.services.webmet.loadbalancer.server.port=80"
         - "traefik.docker.network=traefik_net"
   webmet:
-    image: registry.gitlab.com/gruporadar/frontend/webmet:latest
+    image: registry.gitlab.com/gruporadar/frontend/webmet/webmet:latest
     networks:
       - webmet-net
     volumes:
-      - /mnt/docker-nfs/webmet/media:/app/website/config/media
+      - /mnt/docker-nfs/webmet/media:/app/website/media
     environment:
+      - PYTHONUNBUFFERED=0
       - DEBUG=False
       - DJANGO_SETTINGS=production
       - DOMAIN=webmet.ohmc.ar
       - DB_HOST=172.16.48.10
-      - DB_PORT=5433
+      - DB_PORT=5458
+      - DB_NAME=webmet
       - DB_USER=webmet
-      - DB_PASS=ich1paiV2wooTha
-      - DB_NAME=webmetdb
-      - API_HOST=https://ohmc.ar/webmet
+      - DB_PASS=ich1V2woooTa
       - EMAIL_HOST_USER=gradar.cba@gmail.com
       - EMAIL_HOST_PASSWORD=#grcordoba#
       - EMAIL_SUPPORT=gradar.cba@gmail.com
-      - PYTHONUNBUFFERED=0
     logging:
       driver: "json-file"
       options:
@@ -68,12 +67,3 @@ networks:
 #     - POSTGRES_PASSWORD=gu3bm3t
 #     - POSTGRES_USER=webmet
 #     - POSTGRES_DB=webmet
-
-# PROBAR SIN
-# admindb:
-#   restart: always
-#   image: adminer
-#   depends_on:
-#   - database
-#   ports:
-#   - "8003:8080"

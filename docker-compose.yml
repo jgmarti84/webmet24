@@ -27,9 +27,12 @@ services:
     command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
     ports:
     - "8005:8000"
-    # environment:
-    #   - DEBUG=True
-    #   - DOMAIN=localhost
+    environment:
+      - DEBUG=True
+      - DOMAIN=localhost
+      - DJANGO_SETTINGS=local
+      - DB_HOST=database      
+      - PYTHONUNBUFFERED=0
     volumes:
     - .:/app/website
     - ../genpro_radares/test_data/genpro_product_outputs:/app/website/media/radares/images/
