@@ -1,9 +1,20 @@
 #!/usr/bin/env python
 import os
+from os.path import dirname, isfile
 import sys
 
+import environ
+
+ROOT_DIR = environ.Path(dirname(dirname(dirname(__file__))))
+env = environ.Env()
+
+if isfile(ROOT_DIR('config/.env')):
+    env.read_env(ROOT_DIR('config/.env'))
+
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+    # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+    settings = env.str('DJANGO_SETTINGS', 'production')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', "config.%s" % (settings))
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

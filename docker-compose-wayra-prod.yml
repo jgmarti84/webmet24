@@ -16,7 +16,7 @@ services:
         condition: on-failure
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.webmet.rule=Host(`webmet.ohmc.ar`)"
+        - "traefik.http.routers.webmet.rule=Host(`webmet-beta.ohmc.ar`)"
         - "traefik.http.routers.webmet.entrypoints=websecure"
         - "traefik.http.routers.webmet.tls.certresolver=letsencryptresolver"
         - "traefik.http.routers.webmet.priority=50"
@@ -33,7 +33,7 @@ services:
       - PYTHONUNBUFFERED=0
       - DEBUG=False
       - DJANGO_SETTINGS=production
-      - DOMAIN=webmet.ohmc.ar
+      - DOMAIN=webmet-beta.ohmc.ar
       - DB_HOST=172.16.48.10
       - DB_PORT=5458
       - DB_NAME=webmet
