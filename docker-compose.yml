@@ -23,7 +23,9 @@ services:
     - db_data:/var/lib/postgresql
     - db_data2:/var/lib/postgresql/data
   webmet:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile.local
     command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
     ports:
     - "8005:8000"
