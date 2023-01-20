@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/gruporadar/frontend/webmet/base:latest
+FROM registry.gitlab.com/gruporadar/frontend/webmet/webmet:base
 
 RUN mkdir /app
 COPY ./ /app/website
