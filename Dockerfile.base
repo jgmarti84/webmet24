@@ -1,0 +1,28 @@
+FROM python:2.7-alpine
+
+RUN apk add --update \
+    mariadb-dev \
+    supervisor \ 
+    python-dev \
+    build-base \
+    linux-headers \
+    pcre-dev \
+    py-pip \  
+    nano \    
+    bash \
+    jpeg-dev \
+    zlib-dev \
+    build-base \
+    gcc \
+    abuild \
+    binutils \
+    linux-headers \
+    make \
+    musl-dev \
+    python-dev \
+    postgresql-client \
+    postgresql-dev
+
+ADD deploy/requirements.txt /requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r /requirements.txt
