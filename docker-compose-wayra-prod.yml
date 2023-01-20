@@ -28,6 +28,7 @@ services:
       - webmet-net
     volumes:
       - /mnt/docker-nfs/webmet/media:/app/website/media
+      - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
     environment:
       - PYTHONUNBUFFERED=0
       - DEBUG=False
@@ -55,15 +56,3 @@ networks:
     driver: overlay
   traefik_net:
     external: true
-
-
-# CREAR EN YAKU
-#   database:
-#     restart: always
-#     image: postgres
-#     volumes:
-#     - ./database:/var/lib/postgresql/data
-#     environment:
-#     - POSTGRES_PASSWORD=gu3bm3t
-#     - POSTGRES_USER=webmet
-#     - POSTGRES_DB=webmet
