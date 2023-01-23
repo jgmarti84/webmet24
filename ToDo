@@ -1,0 +1,22 @@
+ToDos
+------
+* Fix en carga de imágenes
+  Actualmente el selector de radares solo oculta/mustra las imagenes de los distintos radares.
+  El comportamiento esperado debería ser que si se deselecciona algun radar dejen de cargarse las imágenes.
+  Los dos scripts implicados son radares.js y layer_events.js
+
+* Responsibe para Celulares
+  * Por defecto se debe cargar un solo radar y centrar el mapa en el origen del mismo.
+  * Ajustar los controles para la pantalla de celu.
+
+* Marcos de imagen faltante 
+  Las imágenesde los productos de radar que no se encuentran en el server se muestran con una imagen vacía (vacio.png).
+  Muchas veces se ve el marco de esa imagen durante la reproducción. No debe verse nada.
+
+* Transparencia de productos:
+  * Las barras de transparencia generales no tienen ningun efecto actualmente.
+  * Crear una funcion para darle funcionalidad. Si se modifica la barra de transparencia de radares por ejemplo,
+    todos los productos activos de radar deben reconfigurarse con el mismo valor de transparencia general o menos,
+    en función de lo preconfigurado por el usuario.
+  * En su defecto, de forma momentanea, se pueden eliminar las barras de transparencia hasta tanto se implemente lo
+    anterior.

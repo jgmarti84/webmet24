@@ -1,0 +1,487 @@
+var current_date = new Date();
+var radares = {};
+var sources = {};
+var polarimetric_selected = [];
+var searching_images = false;
+var last_frame = 'nada';
+var images_preloaded = new Array();
+var wrf = {};
+
+function check_polarimetrics_var(){
+    if ($('#layer-radar-div input:checkbox:checked').length >= 4){
+        //Materialize.toast('Se puede selecionar hasta 4 variables Polarimetricas ', 3000);
+        $('#layer-radar-div input:checkbox:not(":checked")').each(function (i) {
+            $(this).prop('disabled', true);
+            //$(this).children().find('input[type=range]').prop('disabled', true);
+            //$(this).next('input[type=range]').prop('disabled', true);
+        });
+    }else {
+        $('#layer-radar-div input:checkbox:not(":checked")').each(function (i) {
+            $(this).prop('disabled', false);
+            //$(this).children().find('input[type=range]').prop('disabled', false);
+            //console.log($(this).parent());
+        });
+    }
+    polarimetric_selected = []
+    $('#layer-radar-div input:checkbox:checked').each(function (i) {
+        polarimetric_selected.push($(this).data('layer'));
+        //$(this).children().find('input[type=range]').prop('disabled', true);
+        //$(this).next('input[type=range]').prop('disabled', true);
+    });
+    //console.log(polarimetric_selected);
+
+}
+
+
+/**
+* @params None
+* @description
+*  Search off radars of api application .
+* @Author GRC - Kaajavi
+*/
+
+function search_wrf(){
+    for (var wrf_idx=0; wrf_idx<wrf_prod.length; wrf_idx++){
+
+        wrf[wrf_prod[wrf_idx]] = new L.imageOverlay(null,
+                                                    [ [-27.6, -56.4],[-37.3, -69]],
+                                                    {
+            opacity: ret_wrf_opacity(wrf_prod[wrf_idx]),
+            zIndex: parseInt($('.sortable[data-layer="wrf"]').data('layer-z')),
+        }).addTo(map);
+    }
+}
+
+function search_radars(){
+    search_wrf();
+    $.ajax({
+        url: "/api_radares/radares/?format=json"
+    }).then(function(data) {
+        radares = {};
+        $.each(data, function(i, radar) {
+            var southWest = L.latLng(radar.point2_lat, radar.point2_long);
+            var northEast = L.latLng(radar.point1_lat, radar.point1_long);
+            console.log(radar.point2_lat);
+            var bounds = L.latLngBounds(southWest, northEast);
+            
+            // TESTING
+            // if ($('.layer_selection[data-layer="'+radar.title+'"]').is(':checked')==false){
+            //     return 0;
+            // }
+            
+            
+            radares[radar.code]={}
+            radares[radar.code]['title'] = radar.title;
+            radares[radar.code]['lat'] = parseFloat(radar.center_lat);
+            radares[radar.code]['long'] = parseFloat(radar.center_long);
+            radares[radar.code]['cobertura'] = new L.circle([parseFloat(radar.center_lat),parseFloat(radar.center_long)],
+                                                            {radius: 1000 * parseInt(radar.img_radio),
+                                                             stroke: false,
+                                                             fillOpacity:$('.layer_selection[data-layer="radar_radios"]').is(':checked')? parseInt($('.layer_input[data-layer="radar_radios"]').val())/100:0,
+                                                             fill: true,
+                                                             fillColor: 'blue'
+                                                            }).addTo(map);
+            console.log(radares[radar.code]['cobertura'].getBounds());
+            radares[radar.code]['extent'] = bounds;
+            radares[radar.code]['counter'] = 0;
+            radares[radar.code]['layer_group'] = new L.layerGroup([radares[radar.code]['cobertura']]).addTo(map);
+
+            for (j=0; j<polarimetrics_vars.length; j++){
+                radares[radar.code]['layer_'+polarimetrics_vars[j]] = new L.imageOverlay('/static/images/vacio.png',
+                                                                                         radares[radar.code]['extent'],
+                                                                                         {
+                    opacity: (polarimetric_selected.indexOf(polarimetrics_vars[j])>=0)?parseInt($('.layer_input[data-layer="'+polarimetrics_vars[j]+'"]').val())/100:0,
+                    zIndex: parseInt($('.sortable[data-layer="'+polarimetrics_vars[j]+'"]').data('layer-z')),
+                }).addTo(map);
+
+                radares[radar.code]['layer_group'].addLayer(radares[radar.code]['layer_'+polarimetrics_vars[j]])
+
+            }
+            //            layerscontrol.push({['Radar ' +radar.code]: radares[radar.code]['layer_group']});
+            layer_control.addOverlay(radares[radar.code]['layer_group'],radar.code + ' - ' + radar.title);
+
+        });
+        layer_control.addTo(map);
+        search_images();
+    });
+};
+
+function change_date(){
+    //delete sources;
+    $('#circle_search').removeClass('hide');
+    $('#btn_search').addClass('hide');
+    console.log('Cambiando fecha');
+    if (automatic!=null){
+        clearInterval(automatic);
+        automatic = null;
+        $('#velocidad').fadeOut(500);
+        $('#click_play_arrow').html('<i class="material-icons">play_arrow</i>');
+    }
+    clear_layers();
+    //    sources = null;
+    //    sources = {};
+
+    search_images();
+}
+
+
+function search_images(code_radar, polarimetric_var){
+    return false;
+    var search_polarimetrics = "";
+    searching_images = true;
+    images_preloaded = null;
+    images_preloaded = new Array();
+    $('#gif_radar_cont').show();
+    for (i=0; i<polarimetric_selected.length; i++){
+        if (i==0){
+            search_polarimetrics += polarimetric_selected[i];
+        } else{
+            if (polarimetric_selected[i] != undefined){
+                search_polarimetrics += '-' + polarimetric_selected[i];
+            }
+        }
+
+    }
+    var datos= {
+        'code_radar': code_radar ,
+        'polarimetric_var': search_polarimetrics,
+        'date_from': timestamp_from.format("YYYY-MM-DD HH:mm"),
+        'date_to': timestamp_to.format("YYYY-MM-DD HH:mm"),
+    };
+    //console.log(datos);
+    $.ajax({
+        data: datos,
+        url: "/api_radares/images_radares/?format=json",
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            console.log(thrownError);
+        }
+    }).then(function(data) {
+        $('#circle_search').addClass('hide');
+        $('#btn_search').removeClass('hide');
+        //console.log(data);
+        $.each(data, function(i, image) {
+            $('#loader_string').html('Img  '+i + '/' + data.length);
+            var moment_date = rounded_time(moment(image.date));
+            var date_formatted = moment_date.format("DD/MM/YYYY-HH:mm");
+            //console.log(date_formatted);
+            if (sources[image.radar_code]==undefined)  {sources[image.radar_code]={};}
+            if (sources[image.radar_code][image.polarimetric_var]==undefined)  {
+                sources[image.radar_code][image.polarimetric_var]={};
+                sources[image.radar_code][image.polarimetric_var]['counter'] = 0;
+            }
+            //TODO Cargo layers en vez de sources
+            //console.log('Adding source at ' + date_formatted + ': ' + image.image);
+            sources[image.radar_code][image.polarimetric_var][date_formatted] = image.image;
+            images_preloaded[i] = new Image();
+            images_preloaded[i].src = image.image;
+        });
+        //console.log('timeout: ' + (data.length * 25))
+        setTimeout(function(){
+            $('#gif_radar_cont').fadeOut(1000);
+            change_layers_order();
+            searching_images = false;
+            set_actual_sources();
+        },(data.length * 25)+1);
+
+        //images_preloaded = null;
+    });
+};
+
+function clear_layers(){
+    for (radar in radares){
+        for (j=0; j<polarimetrics_vars.length; j++){
+            radares[radar]['layer_' + polarimetrics_vars[j] ].setUrl('/static/images/vacio.png')
+        }
+    }
+}
+
+function ret_radar_opacity(data_layer, polarimetric = false){
+    if ($('.layer_selection[data-layer="radar"]').is(':checked')==false){
+        return 0;
+    }
+    if (!polarimetric){
+        if ($('.layer_selection[data-layer="'+data_layer+'"]').is(':checked')==false){
+            return 0;
+        }
+        if (parseInt($('.layer_input[data-layer="radar"]').val()) > parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())){
+            return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+        }
+        else{
+            return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+        }
+    }
+    else{
+        if (polarimetric_selected.indexOf(polarimetrics_vars[j])<0){
+            return 0;
+        }else{
+            if (parseInt($('.layer_input[data-layer="radar"]').val()) > parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())){
+                return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+            }
+            else{
+                return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+            }
+
+        }
+    }
+}
+
+function ret_wrf_opacity(data_layer){
+    if ($('.layer_selection[data-layer="wrf"]').is(':checked')==false){
+        return 0;
+    }
+
+    else{
+        if ($('.layer_selection[data-layer="'+data_layer+'"]').is(':checked')==false){
+            return 0;
+        }else{
+            if (parseInt($('.layer_input[data-layer="wrf"]').val()) > parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())){
+                return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+            }
+            else{
+                return parseInt($('.layer_input[data-layer="'+data_layer+'"]').val())/100;
+            }
+
+        }
+    }
+}
+
+
+function change_layers_views(){
+    var w_qty = 0;
+    if ($('.layer_selection[data-layer="weather"]').is(':checked')==true){
+        w_qty = parseInt($('.layer_input[data-layer="weather"]').val())/100;
+
+    }else{
+
+    }
+    for (var station in stations) {
+        if (w_qty>=0.05){
+            stations[station].addTo(map);
+            stations[station].setOpacity(w_qty);
+        }else{
+            stations[station].remove();
+        }
+    }
+
+    for (var wrf_layer in wrf) {
+        wrf[wrf_layer].setOpacity(ret_wrf_opacity(wrf_layer));
+    }
+    for (radar in radares){
+        radares[radar]['cobertura'].setStyle({fillOpacity:ret_radar_opacity("radar_radios")});
+
+
+        //        radares[radar]['cobertura'].setStyle({
+        //            fillOpacity: $('.layer_selection[data-layer="radar_radios"]').is(':checked')? parseInt($('.layer_input[data-layer="radar_radios"]').val())/100:0,
+        //        });
+
+
+
+        for (j=0; j<polarimetrics_vars.length; j++){
+            radares[radar]['layer_' + polarimetrics_vars[j] ].setOpacity(
+                ret_radar_opacity(polarimetrics_vars[j],true)
+                //(polarimetric_selected.indexOf(polarimetrics_vars[j])>=0) ? parseInt(parseInt($('.layer_input[data-layer="'+polarimetrics_vars[j]+'"]').val()))/100:0,
+            )
+        }
+    }};
+
+function change_layers_order(){
+
+    for (var station in stations) {
+        stations[station].setZIndexOffset(
+            parseInt($('.sortable[data-layer="weather"]').data('layer-z')));
+    }
+
+    for (var wrf_layer in wrf) {
+        wrf[wrf_layer].setZIndex(
+            parseInt($('.sortable[data-layer="'+wrf_layer+'"]').data('layer-z')));
+    }
+    for (radar in radares){
+        for (j=0; j<polarimetrics_vars.length; j++){
+            radares[radar]['layer_' + polarimetrics_vars[j] ].setZIndex(
+                parseInt($('.sortable[data-layer="'+polarimetrics_vars[j]+'"]').data('layer-z')));
+        }
+
+    }
+}
+
+function clear_img(img){
+    img = null;
+};
+
+var imgs = {}
+
+function set_actual_sources(){
+    if (searching_images){
+        return false;
+    }
+    var taf_utc = timestamp_actual_frame.add(3,'h')
+    var now_frame = taf_utc.format("DD/MM/YYYY-HH:mm");
+
+    var url_min_wrf = parseInt(taf_utc.format("mm"));
+    var url_date_wrf = taf_utc.format("YYYY_MM/DD/");
+    var url_hour_wrf = taf_utc.format("YYYYMMDDHH00.png");
+    var url_media_wrf = 'http://ohmc.psi.unc.edu.ar/wrf/img/webmet/CBA/';
+
+
+    for (var wrf_idx=0; wrf_idx<wrf_prod.length; wrf_idx++){
+        var wrf_url = url_media_wrf + url_date_wrf + wrf_prod[wrf_idx] + '/' + wrf_prod[wrf_idx] +'-' + url_hour_wrf
+        wrf[wrf_prod[wrf_idx]].setUrl(wrf_url);
+
+    }
+
+
+    var pol_url = '';
+    for (radar in radares){
+        for (j=0; j<polarimetrics_vars.length; j++){
+
+            if (ret_radar_opacity(polarimetrics_vars[j],true) <= 0){
+
+                continue;
+            }
+
+            //RMA1_0200_01_20181019T124622Z_0.55_TH.png
+            pol_map = polarimetrics_vars_utils[polarimetrics_vars[j]];
+            pol_url = 'media/radares/images/' + radar + '/'
+            pol_url+= taf_utc.format("YYYY/MM/DD/")
+            pol_url+= radar+'_'+ taf_utc.format("YYYYMMDDTHHmm") + '00Z_'
+            pol_url+= polarimetrics_vars[j] + '_00.png'
+
+
+            var img_stat = radar + polarimetrics_vars[j] + taf_utc.format("YYYYMMDDTHHmm");
+            if (imgs[img_stat] == undefined){
+
+                imgs[img_stat] = new Image()
+                imgs[img_stat].data_polvar =  polarimetrics_vars[j]
+                imgs[img_stat].radar =  radar
+                imgs[img_stat].img_stat = img_stat
+                imgs[img_stat].complete = function(){
+                    radares[this.radar]['counter'] = 0;
+                }
+                imgs[img_stat].onerror = function(){
+
+                    radares[this.radar]['counter'] = radares[this.radar]['counter'] != undefined ? (
+                        radares[this.radar]['counter'] < 3 ? radares[this.radar]['counter'] +1 : radares[this.radar]['counter']) : 1;
+
+                    if (radares[radar]['counter']>=3 || timestamp_actual_frame.isAfter(moment(new Date()))){
+                        radares[this.radar]['layer_' + this.data_polvar ].setUrl('/static/images/vacio.png');
+                    }
+                    this.onerror = null;
+                    this.complete = null;
+                    this.src = null;
+                    clear_img(this);
+                    delete imgs[this.img_stat];
+                }
+
+                imgs[img_stat].src = pol_url
+
+            }
+            radares[radar]['layer_' + polarimetrics_vars[j] ].setUrl(pol_url);
+
+
+
+
+            /*if (sources[radar] != undefined){
+
+                if (sources[radar][polarimetrics_vars[j]] != undefined){
+
+                    if (sources[radar][polarimetrics_vars[j]][now_frame] != undefined){
+                        //create in this place my layer
+                        radares[radar]['layer_' + polarimetrics_vars[j] ].setUrl(sources[radar][polarimetrics_vars[j]][now_frame]);
+                        radares[radar]['counter'] = 0;
+                    }else{
+                        radares[radar]['counter'] += 1;
+                    }
+
+                    if (radares[radar]['counter']>=3 || timestamp_actual_frame.isAfter(moment(new Date()))){
+                        radares[radar]['layer_' + polarimetrics_vars[j] ].setUrl('/static/images/vacio.png');
+                    }
+
+                }
+            }*/
+
+        }
+
+    }
+    console.log(pol_url);
+    see_topes()
+
+}
+
+// CODIGO PARA MOSTRAR TOPES
+var topes_group = new L.LayerGroup();
+map.addLayer(topes_group);
+
+
+
+function see_topes(){
+    topes_group.clearLayers()
+    if ($("#layer_selection_topes").is(':checked')==false){
+        console.log('Topes is not checked')
+        return false;
+    }
+    var taf_utc = timestamp_actual_frame
+    var tope_url = '';
+    for (radar in radares){
+        tope_url = 'media/radares/images/' + radar + '/'
+        tope_url+= taf_utc.format("YYYY/MM/DD/")
+        tope_url+= radar+'_'+ taf_utc.format("YYYYMMDDTHHmm") + '00Z_'
+        tope_url+= 'TOPES_00.txt'
+        $.ajax({
+            method:'GET',
+            url: tope_url,
+            success: function(data){
+                data_lines = data.split('\n');
+                for (splited_data in data_lines){
+                    marker_data = data_lines[splited_data].split(',')
+                    if (marker_data.length != 4) continue
+                    marker_type = marker_data[0]
+                    marker_lat = parseFloat(marker_data[1].replace(']','').replace('[',''))
+                    marker_long = parseFloat(marker_data[2].replace(']','').replace('[',''))
+                    marker_value = marker_data[3]
+                    var title = ''
+                    switch (marker_type) {
+                                case 'T':
+                                    title = '<b>Tope de nube</b> <br> Valor: ' + marker_value + ' mts.'
+                                    break;
+                                case 'N':
+                                    title = '<b>Nucleo de Z</b> <br>Valor: ' + marker_value + ' dBz.'
+                                    break;
+                                default:
+                                    title = '--'
+                            }
+
+
+                    var circleIcon = L.divIcon({
+                        className: function () {
+                            switch (marker_type) {
+                                case 'T':
+                                    return "circle_t"
+                                    break;
+                                case 'N':
+                                    return "circle_n"
+                                    break;
+                                default:
+                                    return "-"
+                            }
+                        }(), iconSize: [8, 8]
+                    });
+                    var marker = new L.marker([marker_lat, marker_long], {
+                        icon: circleIcon,
+                        zIndexOffset: 500,
+                        title: title
+                    })
+                    .bindPopup(title, {closeButton: false});//.addTo(mymap);
+                    topes_group.addLayer(marker);
+                }
+            }
+        })
+    }
+    console.log(tope_url);
+
+}
+
+
+//inicializar
+check_polarimetrics_var();
