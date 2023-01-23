@@ -6,6 +6,10 @@ services:
       dockerfile: ./deploy/nginx/Dockerfile
     restart: always
     container_name: nginx_webmet
+    volumes:
+    - ./static:/var/www/html/static
+
+    
     depends_on:
       - webmet
     ports:
@@ -37,7 +41,7 @@ services:
       - PYTHONUNBUFFERED=0
     volumes:
     - .:/app/website
-    - ../genpro_radares/test_data/genpro_product_outputs:/app/website/media/radares/images/
+    - ../genpro_radar/test_data/genpro_outputs:/app/website/media/radares/images/
     depends_on:
     - database
     restart: always
