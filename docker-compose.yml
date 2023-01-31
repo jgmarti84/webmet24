@@ -7,9 +7,7 @@ services:
     restart: always
     container_name: nginx_webmet
     volumes:
-    - ./static:/var/www/html/static
-
-    
+    - ./static:/var/www/html/static  
     depends_on:
       - webmet
     ports:

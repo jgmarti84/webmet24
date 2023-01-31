@@ -315,7 +315,8 @@ function set_actual_sources(){
     var url_min_wrf = parseInt(taf_utc.format("mm"));
     var url_date_wrf = taf_utc.format("YYYY_MM/DD/");
     var url_hour_wrf = taf_utc.format("YYYYMMDDHH00.png");
-    var url_media_wrf = 'http://ohmc.psi.unc.edu.ar/wrf/img/webmet/CBA/';
+    var url_media_wrf = 'https://wrf.ohmc.ar/img/webmet/A/';
+    
 
 
     for (var wrf_idx=0; wrf_idx<wrf_prod.length; wrf_idx++){
