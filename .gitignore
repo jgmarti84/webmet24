@@ -1,6 +1,7 @@
 ### Python ###
 __pycache__/
 *.pyc
+*.test
 
 # Spyder project settings
 .spyderproject
