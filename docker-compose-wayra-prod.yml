@@ -29,7 +29,7 @@ services:
     networks:
       - webmet-net
     volumes:
-      - /mnt/docker-nfs/webmet/media:/app/website/media
+      # - /mnt/docker-nfs/webmet/media:/app/website/media
       - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
     environment:
       - PYTHONUNBUFFERED=0
