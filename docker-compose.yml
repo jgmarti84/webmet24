@@ -7,11 +7,12 @@ services:
     restart: always
     container_name: nginx_webmet
     volumes:
-    - ./static:/var/www/html/static  
+    - ./static:/var/www/html/static
     depends_on:
       - webmet
     ports:
       - "0.0.0.0:85:80"
+
   database:
     # image: postgres
     image: postgres:11.3
@@ -24,6 +25,7 @@ services:
     volumes:
     - db_data:/var/lib/postgresql
     - db_data2:/var/lib/postgresql/data
+
   webmet:
     build:
       context: .
