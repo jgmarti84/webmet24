@@ -25,15 +25,15 @@ services:
 
   webmet:
     image: registry.gitlab.com/gruporadar/frontend/webmet/webmet:latest
-    # command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
+    # command: python manage.py runserver 0.0.0.0:8000
     networks:
       - webmet-net
     volumes:
-      # - /mnt/docker-nfs/webmet/media:/app/website/media
+      - /mnt/docker-nfs/webmet/media:/app/website/media
       - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
     environment:
-      - PYTHONUNBUFFERED=0
+      - PYTHONUNBUFFERED=1  # solo en este modo carga las imagenes de /media
       - DEBUG=False
       - DJANGO_SETTINGS=production
       - DOMAIN=webmet-beta.ohmc.ar
