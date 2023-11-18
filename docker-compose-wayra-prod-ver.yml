@@ -1,0 +1,64 @@
+version: "3.4"
+
+services:
+  proxy:
+    image: registry.gitlab.com/gruporadar/frontend/webmet/proxy:latest
+    networks:
+      - webmet-net
+      - traefik_net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        # - "traefik.http.routers.webmet.rule=Host(`webmet.ohmc.ar`) || Host(`webmet-beta.ohmc.ar`)"
+        - "traefik.http.routers.webmet.rule=Host(`webmet-beta.ohmc.ar`)"
+        - "traefik.http.routers.webmet.entrypoints=websecure"
+        - "traefik.http.routers.webmet.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.webmet.priority=50"
+        - "traefik.http.services.webmet.loadbalancer.server.port=80"
+        - "traefik.docker.network=traefik_net"
+
+  webmet:
+    image: registry.gitlab.com/gruporadar/frontend/webmet/webmet:20012023
+    # command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - webmet-net
+    volumes:
+      # - /mnt/docker-nfs/webmet/media:/app/website/media
+      - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
+    environment:
+      - PYTHONUNBUFFERED=1  # solo en este modo carga las imagenes de /media
+      - DEBUG=False
+      - DJANGO_SETTINGS=production
+      # - DOMAIN=webmet.ohmc.ar,webmet-beta.ohmc.ar
+      - DOMAIN=webmet-beta.ohmc.ar
+      - DB_HOST=172.16.48.10
+      - DB_PORT=5458
+      - DB_NAME=webmet
+      - DB_USER=webmet
+      - DB_PASS=ich1V2woooTa
+      - EMAIL_HOST_USER=gradar.cba@gmail.com
+      - EMAIL_HOST_PASSWORD=#grcordoba#
+      - EMAIL_SUPPORT=gradar.cba@gmail.com
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+networks:
+  webmet-net:
+    driver: overlay
+  traefik_net:
+    external: true
