@@ -287,8 +287,11 @@
         {% for sensor in '01' %}
             setInterval(function(){
                 d = new Date();
-                $("#image_campoE{{sensor}}").attr("src", "http://grc.famaf.unc.edu.ar/media/campo/CampoE{{sensor}}.png?"+d.getTime());
-            console.log('upload http://grc.famaf.unc.edu.ar/media/campo/CampoE{{sensor}}.png?')
+                // $("#image_campoE{{sensor}}").attr("src", "http://grc.famaf.unc.edu.ar/media/campo/CampoE{{sensor}}.png?"+d.getTime());
+                $("#image_campoE{{sensor}}").attr("src", "http://webmet.ohmc.xyz/media/campo/CampoE{{sensor}}.png?"+d.getTime());
+
+            // console.log('upload http://grc.famaf.unc.edu.ar/media/campo/CampoE{{sensor}}.png?')
+            console.log('upload http://webmet.ohmc.xyz/media/campo/CampoE{{sensor}}.png?')
             },1000*20)
 
          {% endfor %}
