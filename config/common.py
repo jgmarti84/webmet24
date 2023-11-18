@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -123,4 +124,10 @@ MEDIA_ROOT = BASE_DIR + '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 
-
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "https://webmet.ohmc.ar",
+#     "https://webmet-beta.ohmc.ar",
+#     "https://grc.famaf.unc.edu.ar",
+#     "http://localhost:8080",
+# ]

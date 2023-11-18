@@ -1,5 +1,7 @@
 FROM registry.gitlab.com/gruporadar/frontend/webmet/webmet:base
 
+RUN pip install django-cors-headers
+
 RUN mkdir /app
 COPY ./ /app/website
 

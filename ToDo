@@ -1,5 +1,8 @@
 ToDos
 ------
+* Agregar la URL del molino sin https, baja el SSL general de la pagina.
+* 
+
 * Fix en carga de imágenes
   Actualmente el selector de radares solo oculta/mustra las imagenes de los distintos radares.
   El comportamiento esperado debería ser que si se deselecciona algun radar dejen de cargarse las imágenes.
