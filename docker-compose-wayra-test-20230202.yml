@@ -33,7 +33,8 @@ services:
     networks:
       - webmet-test-net
     volumes:
-      - /mnt/docker-nfs/genpro_test/genpro_outputs:/app/website/media/radares/images/
+      # - /mnt/docker-nfs/genpro_test/genpro_outputs:/app/website/media/radares/images/
+      - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
     environment:
       - PYTHONUNBUFFERED=1  # solo en este modo carga las imagenes de /media
       - DEBUG=False
