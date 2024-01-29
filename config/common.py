@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'lu35)7u-i+)n_g_2i+%bk3#*fbyhj+!d5nl$+2uph+kr=3o1-l'
 
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Application definition
 INSTALLED_APPS = [
     'material',
@@ -39,7 +41,8 @@ INSTALLED_APPS = [
     'api_radares',
     'api_wrf',
     'api_estaciones',
-    'variables'
+    'variables',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -124,7 +127,7 @@ MEDIA_ROOT = BASE_DIR + '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
 #     "https://webmet.ohmc.ar",
 #     "https://webmet-beta.ohmc.ar",
