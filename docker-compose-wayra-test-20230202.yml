@@ -1,0 +1,67 @@
+version: "3.4"
+
+services:
+  proxy:
+    image: registry.gitlab.com/gruporadar/frontend/webmet/proxy:20230202
+    networks:
+      - webmet-test-net
+      - traefik_net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    deploy:
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.webmet-test.rule=Host(`webmet-test.ohmc.ar`)"
+        - "traefik.http.routers.webmet-test.entrypoints=websecure"
+        - "traefik.http.routers.webmet-test.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.webmet-test.priority=50"
+        - "traefik.http.services.webmet-test.loadbalancer.server.port=80"
+        - "traefik.docker.network=traefik_net"
+      placement:
+        constraints:
+          - node.hostname == kuntur
+
+  webmet:
+    image: registry.gitlab.com/gruporadar/frontend/webmet/webmet:20230202
+    # command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
+    command: python manage.py runserver 0.0.0.0:8000
+    networks:
+      - webmet-test-net
+    volumes:
+      - /mnt/docker-nfs/genpro_test/genpro_outputs:/app/website/media/radares/images/
+    environment:
+      - PYTHONUNBUFFERED=1  # solo en este modo carga las imagenes de /media
+      - DEBUG=False
+      - DJANGO_SETTINGS=production
+      - DOMAIN=webmet-test.ohmc.ar
+      - DB_HOST=172.16.48.10
+      - DB_PORT=5458
+      - DB_NAME=webmet
+      - DB_USER=webmet
+      - DB_PASS=ich1V2woooTa
+      - EMAIL_HOST_USER=gradar.cba@gmail.com
+      - EMAIL_HOST_PASSWORD=#grcordoba#
+      - EMAIL_SUPPORT=gradar.cba@gmail.com
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == kuntur
+
+networks:
+  webmet-test-net:
+    driver: overlay
+  traefik_net:
+    external: true

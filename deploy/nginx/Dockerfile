@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.23.3
 
 COPY ./deploy/nginx/default /etc/nginx/sites-enabled/default
 COPY ./deploy/nginx/webmet.ohmc.ar /etc/nginx/sites-enabled/webmet.ohmc.ar
