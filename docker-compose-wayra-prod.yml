@@ -35,7 +35,7 @@ services:
       - /mnt/docker-nfs/genpro/genpro_outputs:/app/website/media/radares/images/
     environment:
       - PYTHONUNBUFFERED=1  # solo en este modo carga las imagenes de /media
-      - DEBUG=False
+      - DEBUG=True
       - DJANGO_SETTINGS=production
       - DOMAIN=webmet.ohmc.ar,webmet-beta.ohmc.ar
       # - DOMAIN=webmet-beta.ohmc.ar
