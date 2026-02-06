@@ -1,0 +1,205 @@
+{% load static %} {% load staticfiles %}
+
+<!-- Radar Configuration Panel -->
+<ul id="side-radar-config" class="side-nav radar-config-panel">
+    <li>
+        <div class="userView">
+            <div class="background" style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <h5 class="white-text" style="margin: 0; font-weight: 300;">
+                    <i class="material-icons" style="vertical-align: middle;">settings</i>
+                    Configuración
+                </h5>
+            </div>
+        </div>
+    </li>
+
+    <!-- Time Range Selection -->
+    <li class="config-section">
+        <a href="#!" class='section-header cyan-text'>
+            <i class="material-icons cyan-text">access_time</i> 
+            Selección de Tiempo
+        </a>
+    </li>
+    <li><div class="divider cyan"></div></li>
+    
+    <div class='config-content'>
+        <!-- Quick Presets -->
+        <div class="row" style="margin-top: 20px;">
+            <div class="col s12">
+                <p class="preset-label">Rangos Rápidos:</p>
+                <div class="preset-buttons">
+                    <button class="btn btn-small waves-effect waves-light preset-btn" data-hours="-1" data-delta="1">
+                        Última hora
+                    </button>
+                    <button class="btn btn-small waves-effect waves-light preset-btn" data-hours="-3" data-delta="3">
+                        Últimas 3 horas
+                    </button>
+                    <button class="btn btn-small waves-effect waves-light preset-btn" data-hours="-6" data-delta="6">
+                        Últimas 6 horas
+                    </button>
+                    <button class="btn btn-small waves-effect waves-light preset-btn" data-hours="-12" data-delta="12">
+                        Últimas 12 horas
+                    </button>
+                    <button class="btn btn-small waves-effect waves-light preset-btn" data-hours="-24" data-delta="24">
+                        Últimas 24 horas
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Mode Switch -->
+        <div class="row">
+            <div class="col s12">
+                <div class="switch-container">
+                    <label class="switch-label">
+                        <span class="switch-text">Modo Actual</span>
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" id="dates_chbox">
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                        <span class="switch-text">Fecha Personalizada</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <div class="preloader-wrapper small active hide" id="circle_search">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Date Picker -->
+        <div id='before_time' class='date-picker-container' hidden>
+            <div class="row">
+                <div class="col s12">
+                    <label for="date_from" class="active">Fecha y Hora Base:</label>
+                    <input value="" id="date_from" type="text" class="custom-datetime-input">
+                    <p class="helper-text">Selecciona la fecha/hora de referencia para el análisis</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Window Slider -->
+        <div class='row'>
+            <div class="col s12">
+                <label class="slider-label">Ventana de Tiempo:</label>
+                <div id="delta-slider" class="time-slider"></div>
+                <div class="slider-values">
+                    <span id="slider-start-label" class="slider-value-label"></span>
+                    <span id="slider-end-label" class="slider-value-label"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Source Selection -->
+    <li class="config-section">
+        <a href="#!" class='section-header purple-text'>
+            <i class="material-icons purple-text">map</i> 
+            Mapa Base
+        </a>
+    </li>
+    <li><div class="divider purple"></div></li>
+    
+    <div class='config-content'>
+        <div class="map-source-options">
+            <p>
+                <label>
+                    <input class="with-gap" data-base-layer-check='osmLayer' name="layer_base" 
+                           type="radio" id="osm-check" checked />
+                    <span>Open Street Map</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap" data-base-layer-check='esri_map' name="layer_base" 
+                           type="radio" id="esri_map-check" />
+                    <span>ESRI Mapa</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap" data-base-layer-check='esri_sat' name="layer_base" 
+                           type="radio" id="esri_sat-check" />
+                    <span>ESRI Satelital</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap" data-base-layer-check='esri_topo' name="layer_base" 
+                           type="radio" id="esri_topo-check" />
+                    <span>ESRI Topográfico</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap" data-base-layer-check='argenmap' name="layer_base" 
+                           type="radio" id="argen-check" />
+                    <span>IGN Argentina</span>
+                </label>
+            </p>
+        </div>
+    </div>
+
+    <!-- Radar Coverage -->
+    <li class="config-section">
+        <a href="#!" class='section-header orange-text'>
+            <i class="material-icons orange-text">radio_button_checked</i> 
+            Visualización
+        </a>
+    </li>
+    <li><div class="divider orange"></div></li>
+    
+    <div class='config-content'>
+        <div class="row">
+            <div class="col s12">
+                <p>
+                    <label>
+                        <input type="checkbox" id="layer_selection_radar_radios" 
+                               class='filled-in layer_selection' data-layer='radar_radios'/>
+                        <span>Mostrar Radios de Cobertura</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="layer_selection_topes" 
+                               class='filled-in layer_selection' data-layer='topes' checked/>
+                        <span>Mostrar Topes de Nube</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Geolocation Search -->
+    <li class="config-section">
+        <a href="#!" class='section-header green-text'>
+            <i class="material-icons green-text">location_searching</i> 
+            Búsqueda de Ubicación
+        </a>
+    </li>
+    <li><div class="divider green"></div></li>
+    
+    <div class='config-content'>
+        <div id='searcher' class="search-container"></div>
+    </div>
+
+    <!-- Spacer -->
+    <li style="height: 100px;"></li>
+</ul>

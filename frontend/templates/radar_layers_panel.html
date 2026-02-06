@@ -1,0 +1,179 @@
+{% load static %} {% load staticfiles %} {% load tags_radares %}
+
+<!-- Radar Layers Panel -->
+<ul id="side-radar-layers" class="side-nav radar-layers-panel">
+    <li>
+        <div class="userView">
+            <div class="background" style="padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h5 class="white-text" style="margin: 0; font-weight: 300;">
+                    <i class="material-icons" style="vertical-align: middle;">layers</i>
+                    Productos de Radar
+                </h5>
+            </div>
+        </div>
+    </li>
+
+    <li class="layer-info">
+        <div class="info-message">
+            <i class="material-icons tiny">info</i>
+            Puedes seleccionar hasta 4 productos simultáneamente
+        </div>
+    </li>
+
+    <li><div class="divider orange"></div></li>
+
+    <div id="radar-products-container" class='products-container'>
+        <div id="polarimetrics_sorter" class="products-list">
+            {% for prod in radar_products %}
+            <div class="product-item sortable" data-layer='{{prod.product_key}}' data-layer-z={{forloop.count}}>
+                <div class="product-header">
+                    <div class="product-checkbox">
+                        <label>
+                            <input {% if prod.see_in_open %}checked{% endif %} 
+                                   type="checkbox" 
+                                   id="layer_selection_{{prod.product_key}}" 
+                                   class='filled-in layer_selection' 
+                                   data-layer='{{prod.product_key}}' 
+                                   data-refresh='1'/>
+                            <span></span>
+                        </label>
+                    </div>
+                    
+                    <div class="product-info">
+                        <div class="product-title">{{prod.product_title}}</div>
+                        <div class="product-description">{{prod.product_description|truncatewords:15}}</div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <a href="#!" 
+                           onclick="$('#radar_products_references-{{prod.product_key}}').fadeToggle(300)" 
+                           class="btn-floating btn-small waves-effect waves-light blue tooltipped"
+                           data-position="left" 
+                           data-delay="50"
+                           data-tooltip="Ver Referencia">
+                            <i class="material-icons">palette</i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-opacity {% if not prod.see_in_open %}disabled{% endif %}">
+                    <label class="opacity-label">
+                        <i class="material-icons tiny">opacity</i>
+                        Transparencia
+                    </label>
+                    <div class="opacity-slider-container">
+                        <input type="range" 
+                               {% if not prod.see_in_open %}disabled{% endif %} 
+                               min="0" 
+                               value="100" 
+                               max="100" 
+                               step='5' 
+                               class='opacity-slider layer_input' 
+                               data-layer='{{prod.product_key}}' />
+                        <span class="opacity-value">100%</span>
+                    </div>
+                </div>
+
+                <div class="product-order">
+                    <i class="material-icons handle">drag_indicator</i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Radar Selection -->
+    <li class="config-section">
+        <a href="#!" class='section-header blue-text'>
+            <i class="material-icons blue-text">radar</i> 
+            Radares Disponibles
+        </a>
+    </li>
+    <li><div class="divider blue"></div></li>
+
+    <div class='radar-selection-container'>
+        <div id="radar-list" class="radar-list">
+            <!-- Radars will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <!-- Master Controls -->
+    <li class="config-section">
+        <a href="#!" class='section-header grey-text text-darken-2'>
+            <i class="material-icons">tune</i> 
+            Controles Generales
+        </a>
+    </li>
+    <li><div class="divider"></div></li>
+
+    <div class='config-content'>
+        <div class="row">
+            <div class="col s12">
+                <p>
+                    <label>
+                        <input type="checkbox" 
+                               checked 
+                               id="layer_selection_radar" 
+                               class='filled-in layer_selection' 
+                               data-layer='radar'/>
+                        <span>Habilitar Capas de Radar</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12">
+                <label class="master-opacity-label">Opacidad General</label>
+                <input type="range" 
+                       min="0" 
+                       max="100" 
+                       value="100" 
+                       step='5' 
+                       class='master-opacity-slider layer_input' 
+                       data-layer='radar' />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light btn-block" 
+                        onclick="clearAllSelections()">
+                    <i class="material-icons left">clear_all</i>
+                    Limpiar Selección
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spacer -->
+    <li style="height: 100px;"></li>
+</ul>
+
+<script>
+function clearAllSelections() {
+    $('.layer_selection[data-refresh="1"]').each(function() {
+        if ($(this).is(':checked')) {
+            $(this).prop('checked', false).trigger('change');
+        }
+    });
+    Materialize.toast('Productos deseleccionados', 2000);
+}
+
+// Update opacity value display
+$(document).on('input', '.opacity-slider', function() {
+    var value = $(this).val();
+    $(this).siblings('.opacity-value').text(value + '%');
+});
+
+// Initialize sortable for product ordering
+$(document).ready(function() {
+    $('#polarimetrics_sorter').sortable({
+        handle: '.handle',
+        animation: 150,
+        onEnd: function(evt) {
+            order_polarimetrics(true);
+        }
+    });
+});
+</script>
