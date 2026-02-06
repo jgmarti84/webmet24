@@ -256,8 +256,13 @@
 <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
         integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
         crossorigin=""></script>
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"
-        crossorigin="anonymous"></script>
+<!-- Polyfill for older browsers - Note: Only loads if needed by browser -->
+<script>
+    // Check if Promise is supported, if not load polyfill
+    if (typeof Promise === 'undefined') {
+        document.write('<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js" integrity="sha256-R31qAd8FDfPbJSxh+sxDM2rSJFQ3iKTQXwHlLGZiGHc=" crossorigin="anonymous"><\/script>');
+    }
+</script>
 <script src="{% static 'js/leaflet-search.js' %}"></script>
 <script src="{% static 'js/leaflet-bouncemarker.js' %}"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
