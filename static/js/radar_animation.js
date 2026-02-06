@@ -162,10 +162,12 @@ $('#actual_frame').on('input', function() {
 });
 
 // === Speed Control ===
+var SPEED_SCALE_FACTOR = 105; // Speed calculation scale factor
+
 $('#speed-field').on('input', function() {
     automatic_speed = parseInt($(this).val());
     $('#speed-span').html(automatic_speed + '%');
-    automatic_speed = (105 - automatic_speed) * 1000 / 50;
+    automatic_speed = (SPEED_SCALE_FACTOR - automatic_speed) * 1000 / 50;
     
     if (automatic != null) {
         clearInterval(automatic);
@@ -192,7 +194,7 @@ $('#click_play_arrow').on('click', function() {
         // Start playback
         automatic_speed = parseInt($('#speed-field').val());
         $('#speed-span').html(automatic_speed + '%');
-        automatic_speed = (101 - automatic_speed) * 1000 / 50;
+        automatic_speed = (SPEED_SCALE_FACTOR - automatic_speed) * 1000 / 50;
         
         automatic = setInterval(playback_step, automatic_speed);
         
@@ -243,6 +245,8 @@ $('#click_fast_forward').on('click', function() {
 });
 
 // === Auto-reload for Current Mode ===
+var RELOAD_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes
+
 var reload = setInterval(function() {
     if (!$('#dates_chbox').is(':checked')) {
         var reload_last_frame = parseInt($('#actual_frame').val());
@@ -259,7 +263,7 @@ var reload = setInterval(function() {
         
         console.log('Auto-reload: datos actualizados');
     }
-}, 1000 * 60 * 15); // Every 15 minutes
+}, RELOAD_INTERVAL_MS);
 
 // === Initialize ===
 $(document).ready(function() {

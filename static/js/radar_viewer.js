@@ -377,7 +377,7 @@ $(document).ready(function() {
     // Initialize UI components
     $('.tooltipped').tooltip();
     $('.modal').modal();
-    $('.button-sidenave').sideNav({
+    $('.button-sidenav').sideNav({
         menuWidth: 400,
         edge: 'right'
     });
