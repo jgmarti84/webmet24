@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
                 url(r'^$', views.home, name='main'),
+                url(r'^radar/$', views.radar_viewer, name='radar_viewer'),
                ]

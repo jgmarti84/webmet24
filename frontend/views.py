@@ -19,3 +19,13 @@ def home(request):
         context['long'] = request.GET.get('long', False);
         context['zoom'] = request.GET.get('zoom', False);
     return render(request, 'index.html',context)
+
+def radar_viewer(request):
+    """Modern radar-only viewer with improved UI/UX"""
+    context = {}
+    context['radar_products'] = RadarProduct.objects.filter(enabled=True)
+    if request.GET:
+        context['lat'] = request.GET.get('lat', False);
+        context['long'] = request.GET.get('long', False);
+        context['zoom'] = request.GET.get('zoom', False);
+    return render(request, 'radar_viewer.html', context)
